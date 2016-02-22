@@ -35,7 +35,6 @@ public class RegisterScreen extends AppCompatActivity {
     public static byte[] byteBPM;
     private static int emailValidationResult = 0;
     private CircleImageView imageView;
-    private double[] locationArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,27 +42,6 @@ public class RegisterScreen extends AppCompatActivity {
         setContentView(R.layout.activity_register_screen);
 
         imageView = (CircleImageView) findViewById(R.id.imageView);
-
-        //Get user current location
-        LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        String provider = manager.getBestProvider(new Criteria(), false);
-
-        Location location = new Location(provider);
-
-        //NEED TO CHECK PERMISSIONS!!!
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            location = manager.getLastKnownLocation(provider);
-        } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                    1);
-        }
-        //CHECK PERMISSIONS!!!
-
-        if (location != null) {
-            locationArr = new double[] {location.getLatitude(), location.getLongitude()};
-        }
     }
 
     //Choose profile image
@@ -107,7 +85,7 @@ public class RegisterScreen extends AppCompatActivity {
     //Scale down bitmap
     public static byte[] scaleDownBitmap(Bitmap photo) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        photo.compress(Bitmap.CompressFormat.PNG, 30, stream);
+        photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
         return stream.toByteArray();
     }
@@ -159,8 +137,7 @@ public class RegisterScreen extends AppCompatActivity {
                 i.putExtra("name", name.getText().toString().trim());
                 i.putExtra("email", email.getText().toString().trim());
                 i.putExtra("password", password.getText().toString());
-                i.putExtra("location", locationArr);
-
+                i.putExtra("location", getLocation());
                 startActivity(i);
             }
         }
@@ -182,16 +159,13 @@ public class RegisterScreen extends AppCompatActivity {
                     String end = dotArr[1];
 
                     if (end.length() != 0) {
-                        _("format is valid");
                         ParseQuery<ParseUser> query = ParseUser.getQuery();
                         query.whereEqualTo("email", email);
                         try {
                             List<ParseUser> userList = query.find();
                             if (userList.isEmpty()) {
-                                _("empty");
                                 emailValidationResult = 2;
                             } else {
-                                _("not empty");
                                 emailValidationResult = 1;
                             }
                         } catch (com.parse.ParseException e) {
@@ -201,10 +175,10 @@ public class RegisterScreen extends AppCompatActivity {
                 }
             }
         }
-        _("return happened");
         return emailValidationResult;
     }
 
+    //Hide keyboard on touch
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager)  this.getSystemService(INPUT_METHOD_SERVICE);
         try {
@@ -212,7 +186,29 @@ public class RegisterScreen extends AppCompatActivity {
         } catch (NullPointerException e) {}
     }
 
-    private static void _(String message) {
-        Log.d("msg", message);
+    //Get user location
+    private double[] getLocation() {
+        //Get user current location
+        LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        String provider = manager.getBestProvider(new Criteria(), false);
+
+        Location location = new Location(provider);
+
+        //NEED TO CHECK PERMISSIONS!!!
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            location = manager.getLastKnownLocation(provider);
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    1);
+        }
+        //CHECK PERMISSIONS!!!
+        double[] arr = new double[2];
+        if (location != null) {
+            arr = new double[] {location.getLatitude(), location.getLongitude()};
+        }
+
+        return arr;
     }
 }

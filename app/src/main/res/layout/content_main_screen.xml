@@ -19,7 +19,7 @@
         android:layout_height="60dp"
         android:background="#ffc266"
         android:elevation="8dp"
-        android:id="@+id/frameLayout">
+        android:id="@+id/frameLayout"><![CDATA[
 
         Button
             android:layout_width="wrap_content"
@@ -40,12 +40,36 @@
             android:background="#00ffffff"
             android:textColor="#ffffff"
             android:onClick="back" />
+
+
+
+        ]]>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/imageView2"
+            android:layout_gravity="left|center_vertical"
+            android:src="@drawable/ham_button"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/TeachMatch"
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="28sp" />
     </FrameLayout>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/teacherList"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/frameLayout" />
 

@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.isseiaoki.simplecropview.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+
 public class ImageCircleCrop extends AppCompatActivity {
 
     @Override
@@ -17,15 +19,12 @@ public class ImageCircleCrop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_circle_crop);
 
-        byte[] byteBPM = RegisterScreen.byteBPM;
-
-        Bitmap bitmapToCrop = uncompress(byteBPM);
-
+        //Setup ImageView
+        Bitmap bitmapToCrop = uncompress(RegisterScreen.byteBPM);
         final CropImageView cropImageView = (CropImageView)findViewById(R.id.cropImageView);
 
         // Set image for cropping
         cropImageView.setCropMode(CropImageView.CropMode.CIRCLE);
-        cropImageView.rotateImage(CropImageView.RotateDegrees.ROTATE_90D);
         cropImageView.setImageBitmap(bitmapToCrop);
 
         Button cropButton = (Button) findViewById(R.id.crop_button);

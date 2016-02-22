@@ -2,6 +2,7 @@ package com.nave.omer.myapplication;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
+
+import io.techery.properratingbar.ProperRatingBar;
+
 /**
  * Created by omer on 14/02/16.
  */
-class TeacherListAdapter extends ArrayAdapter<TeacherObject> {
-    public TeacherListAdapter(Context context, TeacherObject[] values) {
+class TeacherListAdapter extends ArrayAdapter<ParseUser> {
+    public TeacherListAdapter(Context context, ParseUser[] values) {
         super(context, R.layout.teacher_card, values);
     }
 
@@ -24,26 +36,48 @@ class TeacherListAdapter extends ArrayAdapter<TeacherObject> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View cellView = inflater.inflate(R.layout.teacher_card, parent, false);
 
-        TeacherObject teacher = getItem(position);
+        ParseUser teacher = getItem(position);
 
         TextView name = (TextView) cellView.findViewById(R.id.teacherName);
-        name.setText(teacher.getName());
+        name.setText((String) teacher.get("Name"));
 
-        //Parse var might be List or Array!!!
+        //Check if not null!!!
         TextView teaches = (TextView) cellView.findViewById(R.id.teaches);
-        teaches.setText(teacher.getTeaches().toString());
+        String teachStr = ((List<String>) teacher.get("canTeach")).toString();
+        teaches.setText(teachStr.substring(1, teachStr.length() - 1));
 
+        //Check if not null!!!
         TextView learns = (TextView) cellView.findViewById(R.id.learns);
-        teaches.setText(teacher.getLearns().toString());
+        String learnStr = ((List<String>) teacher.get("needHelp")).toString();
+        learns.setText(learnStr.substring(1, learnStr.length() - 1));
 
-        /* Add RatingBar
-        TextView rate = (TextView) cellView.findViewById(R.id.rate);
-        teaches.setText(teacher.getRating());
-        */
+        //ratingBar - add rating
+        int rating = 0; // get rating from parse
+        ProperRatingBar ratingBar = (ProperRatingBar) cellView.findViewById(R.id.ratingBar);
+        TextView noRating = (TextView) cellView.findViewById(R.id.no_rating);
 
-        ImageView image = (ImageView) cellView.findViewById(R.id.profile);
-        Bitmap bitmap = ImageCircleCrop.uncompress(teacher.getProfile());
-        image.setImageBitmap(bitmap);
+        if(rating == 0) {
+            ratingBar.setAlpha(0);
+            noRating.setAlpha(1);
+        } else {
+            ratingBar.setAlpha(1);
+            ratingBar.setRating(rating);
+            noRating.setAlpha(0);
+        }
+
+        final ImageView image = (ImageView) cellView.findViewById(R.id.profile);
+
+        ParseFile applicantResume = (ParseFile) teacher.get("Profile");
+        applicantResume.getDataInBackground(new GetDataCallback() {
+            public void done(byte[] data, ParseException e) {
+                if (e == null) {
+                    Bitmap bitmap = ImageCircleCrop.uncompress(data);
+                    image.setImageBitmap(bitmap);
+                } else {
+                    image.setImageResource(R.drawable.profile_placeholder);
+                }
+            }
+        });
 
         return cellView;
     }

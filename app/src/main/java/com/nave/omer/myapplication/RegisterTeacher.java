@@ -6,14 +6,20 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +27,8 @@ import java.util.List;
 public class RegisterTeacher extends AppCompatActivity {
 
     private List<String> canHelpIn = new ArrayList<>();
+    List<String> canHelpInFinal = new ArrayList<>();
+    CheckBox isTeaching;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +39,8 @@ public class RegisterTeacher extends AppCompatActivity {
         Intent i = getIntent();
         boolean check = i.getBooleanExtra("isLearning", true);
 
-        CheckBox cb = (CheckBox) findViewById(R.id.teacherCB);
-        cb.setEnabled(check);
+        isTeaching = (CheckBox) findViewById(R.id.teacherCB);
+        isTeaching.setEnabled(check);
     }
 
     //Back to RegisterStudent
@@ -41,8 +49,13 @@ public class RegisterTeacher extends AppCompatActivity {
     }
 
     public void register(View view) {
-        //Did choose at least one
-        if (canHelpIn.toArray().length != 0) {
+        double rate = 0.0;
+        EditText rateET = (EditText) findViewById(R.id.rateTextView);
+        try {
+            if (rateET.isEnabled()) {
+                rate = Double.parseDouble(rateET.getText().toString());
+            }
+
             Intent data = getIntent();
 
             String name = data.getStringExtra("name");
@@ -51,10 +64,20 @@ public class RegisterTeacher extends AppCompatActivity {
             double[] location = data.getDoubleArrayExtra("location");
             List<String> lessonsNeeded = RegisterStudent.helpNeededFinal;
             byte[] image = RegisterScreen.byteBPM;
-            //Register to Parse database
-            finalizeRegister(name, password, email, canHelpIn, lessonsNeeded, image, location);
-        } else {
-            Toast.makeText(getBaseContext(), "Pick at least one", Toast.LENGTH_SHORT).show();
+
+            //Did choose at least one
+            if (isTeaching.isChecked()) {
+                if (canHelpInFinal.toArray().length != 0) {
+                    //Register to Parse database
+                    finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location);
+                } else {
+                    Toast.makeText(getBaseContext(), "Pick at least one", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location);
+            }
+        } catch (Exception e) {
+            Toast.makeText(getBaseContext(), "Please input valid rate", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -71,6 +94,15 @@ public class RegisterTeacher extends AppCompatActivity {
             CheckBox cb = (CheckBox) findViewById(id);
             cb.setEnabled(enable);
         }
+
+        EditText rateET = (EditText) findViewById(R.id.rateTextView);
+        rateET.setEnabled(enable);
+
+        if (!enable) {
+            canHelpInFinal = new ArrayList<>();
+        } else {
+            canHelpInFinal = canHelpIn;
+        }
     }
 
     //Add/remove class from list
@@ -82,44 +114,47 @@ public class RegisterTeacher extends AppCompatActivity {
         } else {
             canHelpIn.remove(check.getText().toString());
         }
+
+        canHelpInFinal = canHelpIn;
     }
 
     //Register user to Parse database
-    private void finalizeRegister(String name, String password, String email, List<String> canTeach, List<String> needHelp, byte[] image, double[] location) {
-        ParseUser user = new ParseUser();
-
+    ParseUser user = new ParseUser();
+    private void finalizeRegister(String name, String password, String email, List<String> canTeach, List<String> needHelp, double rate, byte[] image, double[] location) {
         user.setUsername(email);
         user.setPassword(password);
         user.setEmail(email.toLowerCase());
 
         user.put("Name", name);
+        user.put("Rate", rate);
         user.addAllUnique("canTeach", canTeach);
         user.addAllUnique("needHelp", needHelp);
         user.put("Location", new ParseGeoPoint(location[0], location[1]));
 
-        //Compress profile image
-        Bitmap profile = ImageCircleCrop.uncompress(RegisterScreen.byteBPM);
-        BitmapFactory.Options opt = new BitmapFactory.Options();
-        opt.inSampleSize = 2;
-        Bitmap compressed = Bitmap.createScaledBitmap(profile, 96, 89, false);
+        ParseFile imageFile = new ParseFile(RegisterScreen.byteBPM);
+        user.put("Profile", imageFile);
 
-        //Scale down image
-        user.addAllUnique("Image", Arrays.asList(RegisterScreen.scaleDownBitmap(compressed)));
-
-        //Signup
-        user.signUpInBackground(new SignUpCallback() {
+        //Save profile image
+        imageFile.saveInBackground(new SaveCallback() {
             @Override
             public void done(com.parse.ParseException e) {
                 if (e == null) {
-                    Intent i = new Intent(getBaseContext(), MainScreen.class);
-                    startActivity(i);
+                    //Signup user
+                    user.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(com.parse.ParseException e) {
+                            //If successful go to main screen
+                            if (e == null) {
+                                Intent i = new Intent(getBaseContext(), MainScreen.class);
+                                startActivity(i);
+                            } else {
+                                Log.i("log", e.toString());
+                                Toast.makeText(getBaseContext(), "Register unsuccessful", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 } else {
-                    Context context = getApplicationContext();
-                    CharSequence text = "Register unsuccessful";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    Toast.makeText(getBaseContext(), "Register unsuccessful", Toast.LENGTH_SHORT).show();
                 }
             }
         });

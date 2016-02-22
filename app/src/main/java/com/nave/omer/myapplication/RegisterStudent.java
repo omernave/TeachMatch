@@ -35,6 +35,7 @@ public class RegisterStudent extends AppCompatActivity {
                 i.putExtra("name", data.getStringExtra("name"));
                 i.putExtra("email", data.getStringExtra("email"));
                 i.putExtra("password", data.getStringExtra("password"));
+                i.putExtra("location", data.getDoubleArrayExtra("location"));
                 i.putExtra("isLearning", true);
 
                 helpNeededFinal = helpNeeded;
@@ -57,7 +58,7 @@ public class RegisterStudent extends AppCompatActivity {
         }
     }
 
-    //Check/uncheck all checkboxs
+    //Check/un-check all checkboxes
     public void wantToLearn(View view) {
         enOrDis(((CheckBox) view).isChecked());
     }
@@ -67,7 +68,7 @@ public class RegisterStudent extends AppCompatActivity {
         finish();
     }
 
-    //Add class to list
+    //Add/remove class to list
     public void lessonPressed(View view) {
         CheckBox check = (CheckBox) view;
 
@@ -76,15 +77,23 @@ public class RegisterStudent extends AppCompatActivity {
         } else {
             helpNeeded.remove(check.getText().toString());
         }
+
+        helpNeededFinal = helpNeeded;
     }
 
-    //Check/uncheck all checkboxs
+    //Check/un-check all checkboxes
     private void enOrDis(boolean enable) {
         int[] ids = new int[] {R.id.checkBox1, R.id.checkBox2, R.id.checkBox3, R.id.checkBox4, R.id.checkBox5, R.id.checkBox6, R.id.checkBox7, R.id.checkBox8, R.id.checkBox9, R.id.checkBox10, R.id.checkBox11, R.id.checkBox12, R.id.checkBox13, };
 
         for (int id: ids) {
             CheckBox cb = (CheckBox) findViewById(id);
             cb.setEnabled(enable);
+        }
+
+        if (!enable) {
+            helpNeededFinal = new ArrayList<>();
+        } else {
+            helpNeededFinal = helpNeeded;
         }
     }
 }
