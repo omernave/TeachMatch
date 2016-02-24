@@ -16,5 +16,6 @@
     <string name="Email">Email</string>
     <string name="IWantStudent">I want to be a student</string>
     <string name="IWantTeacher">I want to be a teacher</string>
+    <string name="title_activity_about_yourself_register">AboutYourselfRegister</string>
 
 </resources>

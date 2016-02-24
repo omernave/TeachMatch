@@ -29,7 +29,6 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
         super(context, R.layout.teacher_card, values);
     }
 
-    //UNFINISHED!!!!!!!!!!!!!
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //Get cell view
@@ -47,12 +46,10 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
         teaches.setText(teachStr.substring(1, teachStr.length() - 1));
 
         //Check if not null!!!
-        TextView learns = (TextView) cellView.findViewById(R.id.learns);
-        String learnStr = ((List<String>) teacher.get("needHelp")).toString();
-        learns.setText(learnStr.substring(1, learnStr.length() - 1));
-
-        //ratingBar - add rating
-        int rating = 0; // get rating from parse
+        TextView education = (TextView) cellView.findViewById(R.id.education);
+        education.setText((String) teacher.get("Education"));
+        
+        int rating = teacher.getInt("Rating"); // get rating from parse
         ProperRatingBar ratingBar = (ProperRatingBar) cellView.findViewById(R.id.ratingBar);
         TextView noRating = (TextView) cellView.findViewById(R.id.no_rating);
 

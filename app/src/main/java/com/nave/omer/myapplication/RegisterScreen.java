@@ -133,7 +133,7 @@ public class RegisterScreen extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Please add an image", Toast.LENGTH_SHORT).show();
             } else {
                 //Data to pass
-                Intent i = new Intent(getBaseContext(), RegisterStudent.class);
+                Intent i = new Intent(getBaseContext(), AboutYourselfRegister.class);
                 i.putExtra("name", name.getText().toString().trim());
                 i.putExtra("email", email.getText().toString().trim());
                 i.putExtra("password", password.getText().toString());

@@ -57,7 +57,8 @@ public class RegisterTeacher extends AppCompatActivity {
             }
 
             Intent data = getIntent();
-
+            String education = data.getStringExtra("education");
+            String aboutMe = data.getStringExtra("aboutMe");
             String name = data.getStringExtra("name");
             String email = data.getStringExtra("email");
             String password = data.getStringExtra("password");
@@ -69,12 +70,12 @@ public class RegisterTeacher extends AppCompatActivity {
             if (isTeaching.isChecked()) {
                 if (canHelpInFinal.toArray().length != 0) {
                     //Register to Parse database
-                    finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location);
+                    finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location, education, aboutMe);
                 } else {
                     Toast.makeText(getBaseContext(), "Pick at least one", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location);
+                finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location, education, aboutMe);
             }
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), "Please input valid rate", Toast.LENGTH_SHORT).show();
@@ -120,16 +121,20 @@ public class RegisterTeacher extends AppCompatActivity {
 
     //Register user to Parse database
     ParseUser user = new ParseUser();
-    private void finalizeRegister(String name, String password, String email, List<String> canTeach, List<String> needHelp, double rate, byte[] image, double[] location) {
+    private void finalizeRegister(String name, String password, String email, List<String> canTeach, List<String> needHelp, double rate, byte[] image, double[] location, String education, String about) {
         user.setUsername(email);
         user.setPassword(password);
         user.setEmail(email.toLowerCase());
 
         user.put("Name", name);
         user.put("Rate", rate);
+        user.put("Rating", 0);
+        user.put("Location", new ParseGeoPoint(location[0], location[1]));
+        user.put("AboutMe", about);
+        user.put("Education", education);
         user.addAllUnique("canTeach", canTeach);
         user.addAllUnique("needHelp", needHelp);
-        user.put("Location", new ParseGeoPoint(location[0], location[1]));
+
 
         ParseFile imageFile = new ParseFile(RegisterScreen.byteBPM);
         user.put("Profile", imageFile);

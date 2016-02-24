@@ -36,6 +36,8 @@ public class RegisterStudent extends AppCompatActivity {
                 i.putExtra("email", data.getStringExtra("email"));
                 i.putExtra("password", data.getStringExtra("password"));
                 i.putExtra("location", data.getDoubleArrayExtra("location"));
+                i.putExtra("education", data.getStringExtra("education"));
+                i.putExtra("aboutMe", data.getStringExtra("aboutMe"));
                 i.putExtra("isLearning", true);
 
                 helpNeededFinal = helpNeeded;
@@ -43,7 +45,6 @@ public class RegisterStudent extends AppCompatActivity {
                 startActivity(i);
             } else {
                 Toast.makeText(getBaseContext(), "Pick at least one", Toast.LENGTH_SHORT).show();
-
             }
         } else {
             Intent i = new Intent(getBaseContext(), RegisterTeacher.class);
