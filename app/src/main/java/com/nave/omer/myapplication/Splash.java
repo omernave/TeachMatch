@@ -15,7 +15,7 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         //Temporary
-        ParseUser.getCurrentUser().logOut();
+        //ParseUser.getCurrentUser().logOut();
 
         //1 sec counter
         new CountDownTimer(1000, 1000) {

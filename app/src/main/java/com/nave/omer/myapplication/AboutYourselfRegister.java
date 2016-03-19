@@ -30,6 +30,7 @@ public class AboutYourselfRegister extends AppCompatActivity {
 
         boolean isReady = true;
 
+        //Validate
         if (school == "") {
             edu.setError("Please fill this field");
             isReady = false;
@@ -39,6 +40,7 @@ public class AboutYourselfRegister extends AppCompatActivity {
             isReady = false;
         }
 
+        //Go to student register
         if (isReady) {
             Intent i = new Intent(getBaseContext(), RegisterStudent.class);
             Intent data = getIntent();
@@ -53,6 +55,7 @@ public class AboutYourselfRegister extends AppCompatActivity {
         }
     }
 
+    //Go back
     public void back(View view) {
         finish();
     }

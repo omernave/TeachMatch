@@ -2,7 +2,6 @@ package com.nave.omer.myapplication;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daimajia.swipe.SwipeLayout;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -75,6 +75,49 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
                 }
             }
         });
+
+
+        SwipeLayout swipeLayout =  (SwipeLayout) cellView.findViewById(R.id.swipeList);
+
+        //set show mode.
+        swipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
+
+        //add drag edge.(If the BottomView has 'layout_gravity' attribute, this line is unnecessary)
+        //swipeLayout.addDrag(SwipeLayout.DragEdge.Left, cellView.findViewById(R.id.bg1));
+        //swipeLayout.addDrag(SwipeLayout.DragEdge.Right, cellView.findViewById(R.id.bg2));
+
+        swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
+            @Override
+            public void onClose(SwipeLayout layout) {
+                //when the SurfaceView totally cover the BottomView.
+            }
+
+            @Override
+            public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+                //you are swiping.
+            }
+
+            @Override
+            public void onStartOpen(SwipeLayout layout) {
+
+            }
+
+            @Override
+            public void onOpen(SwipeLayout layout) {
+                //when the BottomView totally show.
+            }
+
+            @Override
+            public void onStartClose(SwipeLayout layout) {
+
+            }
+
+            @Override
+            public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+                //when user's hand released.
+            }
+        });
+
 
         return cellView;
     }

@@ -11,203 +11,240 @@
     android:background="#00ffffff"
     android:elevation="8dp">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#ffffff"
-        android:weightSum="1">
-
+    <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/swipeList">
+        <!-- Bottom View Start-->
         <LinearLayout
+            android:background="#66ddff00"
+            android:id="@+id/bottom_wrapper"
+            android:layout_width="180dp"
+            android:weightSum="1"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="0.12">
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
+
+            <!--What you want to show-->
+            <FrameLayout
+                android:layout_width="90dp"
+                android:id="@+id/bg1"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:weightSum="1">
+                android:layout_weight="1"
+                android:background="#fff389">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Omer Nave"
-                    android:id="@+id/teacherName"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="10dp" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="103dp"
-                    android:layout_height="108dp"
-                    android:id="@+id/profile"
-                    android:src="@drawable/profile_placeholder"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.18"
-                    android:layout_marginTop="8dp" />
-
-                <RelativeLayout
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp">
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView3"
+                    android:src="@drawable/education"
+                    android:scaleType="fitCenter"
+                    android:padding="30dp" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="90dp"
+                android:id="@+id/bg2"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFEB3B">
 
-                </RelativeLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView4"
+                    android:src="@drawable/messages"
+                    android:scaleType="fitCenter"
+                    android:padding="30dp" />
+            </FrameLayout>
+        </LinearLayout>
+        <!-- Bottom View End-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="More..."
-                    android:id="@+id/textView10"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginLeft="16dp"
-                    android:textStyle="italic" />
-            </LinearLayout>
+        <!-- Surface View Start -->
+        <LinearLayout
+            android:padding="0dp"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="26dp"
-                    android:layout_gravity="right"
-                    android:background="#00000000"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="8dp">
-
-                    <io.techery.properratingbar.ProperRatingBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="26dp"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
-                        app:prb_defaultRating="4"
-                        app:prb_symbolicTick="\u2605"
-                        app:prb_symbolicTickNormalColor="@android:color/darker_gray"
-                        app:prb_symbolicTickSelectedColor="#ede727"
-                        app:prb_totalTicks="5"
-                        android:layout_gravity="right|top"
-                        android:id="@+id/ratingBar" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="No rating"
-                        android:id="@+id/no_rating"
-                        android:layout_gravity="right|center_vertical"
-                        android:textStyle="italic" />
-
-                </FrameLayout>
+                android:layout_height="200dp"
+                android:background="#ffffff"
+                android:weightSum="1">
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:paddingTop="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Teaches:"
-                            android:id="@+id/textView2"
-                            android:layout_marginLeft="16dp"
-                            android:textStyle="bold"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Education"
-                            android:id="@+id/textView4"
-                            android:layout_marginLeft="16dp"
-                            android:textStyle="bold"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Rate:"
-                            android:id="@+id/textView5"
-                            android:layout_marginLeft="16dp"
-                            android:textStyle="bold" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="32dp" />
-                    </LinearLayout>
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.12">
 
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:paddingLeft="8dp"
-                        android:paddingTop="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Math, Civics"
-                            android:id="@+id/teaches"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Handasaim High School"
-                            android:id="@+id/education"
-                            android:layout_weight="1" />
+                        android:weightSum="1">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="5$/hour"
-                            android:id="@+id/rate" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Omer Nave"
+                            android:id="@+id/teacherName"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="10dp" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="103dp"
+                            android:layout_height="108dp"
+                            android:id="@+id/profile"
+                            android:src="@drawable/profile_placeholder"
+                            android:layout_marginLeft="16dp"
+                            android:layout_weight="0.18"
+                            android:layout_marginTop="8dp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="32dp"
-                            android:layout_marginRight="8dp">
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp">
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="26dp"
+                            android:layout_gravity="right"
+                            android:background="#00000000"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp">
+
+                            <io.techery.properratingbar.ProperRatingBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="26dp"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:prb_defaultRating="4"
+                                app:prb_symbolicTick="\u2605"
+                                app:prb_symbolicTickNormalColor="@android:color/darker_gray"
+                                app:prb_symbolicTickSelectedColor="#ede727"
+                                app:prb_totalTicks="5"
+                                android:layout_gravity="right|top"
+                                android:id="@+id/ratingBar" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="Start Chat"
-                                android:id="@+id/textView9"
-                                android:layout_marginRight="8dp"
-                                android:textStyle="italic"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentEnd="true" />
-                        </RelativeLayout>
+                                android:text="No rating"
+                                android:id="@+id/no_rating"
+                                android:layout_gravity="right|center_vertical"
+                                android:textStyle="italic" />
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="Teaches:"
+                                    android:id="@+id/textView2"
+                                    android:layout_marginLeft="16dp"
+                                    android:textStyle="bold"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="Education:"
+                                    android:id="@+id/textView4"
+                                    android:layout_marginLeft="16dp"
+                                    android:textStyle="bold"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="Rate:"
+                                    android:id="@+id/textView5"
+                                    android:layout_marginLeft="16dp"
+                                    android:textStyle="bold" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="32dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:paddingLeft="8dp"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="Math, Civics"
+                                    android:id="@+id/teaches"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="Handasaim High School"
+                                    android:id="@+id/education"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="5$/hour"
+                                    android:id="@+id/rate" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="32dp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
 
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
-        </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
+        <!-- Surface View End -->
+    </com.daimajia.swipe.SwipeLayout>
+
+
+
 </LinearLayout>

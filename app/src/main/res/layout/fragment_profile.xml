@@ -1,0 +1,461 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nave.omer.myapplication.ProfileFragment"
+    android:background="@drawable/notebook_background">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:paddingLeft="10dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/profile"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/profile_placeholder"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Personal Information"
+                    android:id="@+id/textView9"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Omer Nave"
+                    android:id="@+id/name"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Omernave65@gmail.com"
+                    android:id="@+id/email"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="30/11/1997"
+                    android:id="@+id/birthday"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Change password"
+                    android:id="@+id/textView14"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Education"
+                    android:id="@+id/textView15"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Handasaim High School"
+                    android:id="@+id/education"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="About Me"
+                    android:id="@+id/textView17"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Hello im a good student and a good teacher please give me money now"
+                    android:id="@+id/about_me"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="$5.50/Hour"
+                    android:id="@+id/rate"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Studying Subjects"
+                    android:id="@+id/textView20"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/studentCB"
+                    android:layout_marginTop="-16dp"
+                    android:baselineAligned="false" >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1" >
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Math"
+                            android:id="@+id/checkBox1"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="History"
+                            android:id="@+id/checkBox2"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Computer Science"
+                            android:id="@+id/checkBox3"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Citizenship"
+                            android:id="@+id/checkBox4"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Literature"
+                            android:id="@+id/checkBox5"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="English"
+                            android:id="@+id/checkBox6"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bible"
+                            android:id="@+id/checkBox7"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Grammar"
+                            android:id="@+id/checkBox8"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Electronics"
+                            android:id="@+id/checkBox9"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginStart="59dp"
+                        android:layout_weight="1"
+                        android:layout_margin="0dp" >
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chemistry"
+                            android:id="@+id/checkBox10"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Physics"
+                            android:id="@+id/checkBox11"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Biology"
+                            android:id="@+id/checkBox12"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cyber"
+                            android:id="@+id/checkBox13"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="learnCBClicked" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Teaching Subjects"
+                    android:id="@+id/textView21"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/studentCB"
+                    android:layout_marginTop="-16dp"
+                    android:baselineAligned="false" >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1" >
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Math"
+                            android:id="@+id/checkBox14"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="History"
+                            android:id="@+id/checkBox15"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Computer Science"
+                            android:id="@+id/checkBox16"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Citizenship"
+                            android:id="@+id/checkBox17"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Literature"
+                            android:id="@+id/checkBox18"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="English"
+                            android:id="@+id/checkBox19"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bible"
+                            android:id="@+id/checkBox20"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Grammar"
+                            android:id="@+id/checkBox21"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Electronics"
+                            android:id="@+id/checkBox22"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginStart="59dp"
+                        android:layout_weight="1"
+                        android:layout_margin="0dp" >
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chemistry"
+                            android:id="@+id/checkBox23"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Physics"
+                            android:id="@+id/checkBox24"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Biology"
+                            android:id="@+id/checkBox25"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cyber"
+                            android:id="@+id/checkBox26"
+                            android:checked="false"
+                            android:textSize="20sp"
+                            android:layout_margin="6dp"
+                            android:onClick="lessonPressed" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </TableLayout>
+
+    </ScrollView>
+
+</FrameLayout>

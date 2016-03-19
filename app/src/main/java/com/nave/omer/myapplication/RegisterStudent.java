@@ -84,7 +84,7 @@ public class RegisterStudent extends AppCompatActivity {
 
     //Check/un-check all checkboxes
     private void enOrDis(boolean enable) {
-        int[] ids = new int[] {R.id.checkBox1, R.id.checkBox2, R.id.checkBox3, R.id.checkBox4, R.id.checkBox5, R.id.checkBox6, R.id.checkBox7, R.id.checkBox8, R.id.checkBox9, R.id.checkBox10, R.id.checkBox11, R.id.checkBox12, R.id.checkBox13, };
+        int[] ids = new int[] {R.id.checkBox1, R.id.checkBox2, R.id.checkBox3, R.id.checkBox4, R.id.checkBox5, R.id.checkBox6, R.id.checkBox7, R.id.checkBox8, R.id.checkBox9, R.id.checkBox10, R.id.checkBox11, R.id.checkBox12, R.id.checkBox13 };
 
         for (int id: ids) {
             CheckBox cb = (CheckBox) findViewById(id);

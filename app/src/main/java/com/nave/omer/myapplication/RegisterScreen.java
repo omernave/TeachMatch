@@ -77,6 +77,7 @@ public class RegisterScreen extends AppCompatActivity {
 
                 Intent i = new Intent(getBaseContext(), ImageCircleCrop.class);
                 byteBPM = scaleDownBitmap(bitmap);
+                
                 startActivityForResult(i, 1231);
             }
         });

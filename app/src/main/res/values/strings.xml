@@ -18,4 +18,8 @@
     <string name="IWantTeacher">I want to be a teacher</string>
     <string name="title_activity_about_yourself_register">AboutYourselfRegister</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_check_stuff">CheckStuff</string>
+
 </resources>
