@@ -59,6 +59,7 @@ public class RegisterTeacher extends AppCompatActivity {
             Intent data = getIntent();
             String education = data.getStringExtra("education");
             String aboutMe = data.getStringExtra("aboutMe");
+            String date = data.getStringExtra("birthday");
             String name = data.getStringExtra("name");
             String email = data.getStringExtra("email");
             String password = data.getStringExtra("password");
@@ -70,12 +71,12 @@ public class RegisterTeacher extends AppCompatActivity {
             if (isTeaching.isChecked()) {
                 if (canHelpInFinal.toArray().length != 0) {
                     //Register to Parse database
-                    finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location, education, aboutMe);
+                    finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location, education, aboutMe, date);
                 } else {
                     Toast.makeText(getBaseContext(), "Pick at least one", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location, education, aboutMe);
+                finalizeRegister(name, password, email, canHelpInFinal, lessonsNeeded, rate, image, location, education, aboutMe, date);
             }
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), "Please input valid rate", Toast.LENGTH_SHORT).show();
@@ -121,7 +122,7 @@ public class RegisterTeacher extends AppCompatActivity {
 
     //Register user to Parse database
     ParseUser user = new ParseUser();
-    private void finalizeRegister(String name, String password, String email, List<String> canTeach, List<String> needHelp, double rate, byte[] image, double[] location, String education, String about) {
+    private void finalizeRegister(String name, String password, String email, List<String> canTeach, List<String> needHelp, double rate, byte[] image, double[] location, String education, String about, String date) {
         user.setUsername(email);
         user.setPassword(password);
         user.setEmail(email.toLowerCase());
@@ -132,6 +133,7 @@ public class RegisterTeacher extends AppCompatActivity {
         user.put("Location", new ParseGeoPoint(location[0], location[1]));
         user.put("AboutMe", about);
         user.put("Education", education);
+        user.put("Birthday", date);
         user.addAllUnique("canTeach", canTeach);
         user.addAllUnique("needHelp", needHelp);
 

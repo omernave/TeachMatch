@@ -1,22 +1,31 @@
 package com.nave.omer.myapplication;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.GetDataCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -37,19 +46,20 @@ public class ProfileFragment extends Fragment {
     public static List<String> canHelp = new ArrayList<>();
 
     ImageView image;
+    View view;
+    int[] fieldsId = new int[] {R.id.name, R.id.birthday, R.id.education, R.id.about_me, R.id.rate};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         for (int id: learningCBId) {
             CheckBox cb = (CheckBox) view.findViewById(id);
             cb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("log", "learn click");
                     learnCBClicked(v);
                 }
             });
@@ -60,8 +70,17 @@ public class ProfileFragment extends Fragment {
             cb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("log", "teach click");
                     teachCBClicked(v);
+                }
+            });
+        }
+
+        for (int id: fieldsId) {
+            TextView cb = (TextView) view.findViewById(id);
+            cb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fieldClicked(v);
                 }
             });
         }
@@ -83,16 +102,16 @@ public class ProfileFragment extends Fragment {
     private void setupPage(View view) {
         ParseUser user = ParseUser.getCurrentUser();
 
-        personalInfo(view, user);
-        aboutMe(view, user);
-        learningSubjects(view, user);
-        teachingSubjects(view, user);
+        personalInfo(user);
+        aboutMe(user);
+        learningSubjects(user);
+        teachingSubjects(user);
 
         TextView education = (TextView) view.findViewById(R.id.education);
         education.setText(user.getString("Education"));
     }
 
-    private void personalInfo(View view, ParseUser user) {
+    private void personalInfo(ParseUser user) {
         TextView name = (TextView) view.findViewById(R.id.name);
         TextView email = (TextView) view.findViewById(R.id.email);
         TextView birthday = (TextView) view.findViewById(R.id.birthday);
@@ -100,7 +119,7 @@ public class ProfileFragment extends Fragment {
 
         name.setText(user.getString("Name"));
         email.setText(user.getUsername());
-        //birthday.setText(user.getString("Birthday")); *NEED TO ADD!*
+        birthday.setText(user.getString("Birthday"));
 
         ParseFile applicantResume = (ParseFile) user.get("Profile");
         applicantResume.getDataInBackground(new GetDataCallback() {
@@ -115,16 +134,85 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void aboutMe(View view, ParseUser user) {
+    private void aboutMe(ParseUser user) {
         TextView aboutMe = (TextView) view.findViewById(R.id.about_me);
         TextView rate = (TextView) view.findViewById(R.id.rate);
 
         aboutMe.setText(user.getString("AboutMe"));
-        rate.setText(String.valueOf(user.getDouble("Rate")));
+        rate.setText(String.valueOf(user.getDouble("Rate")) + " $/Hour");
+    }
+
+    public void fieldClicked(View view) {
+        switch (view.getId()) {
+            case R.id.name:
+                openDialog("Change name:", "Name");
+                break;
+            case R.id.email:
+                Toast.makeText(getActivity(), "You can't change your email address",
+                        Toast.LENGTH_LONG).show();
+            case R.id.birthday:
+                openDialog("Change date:", "Birthday");
+                break;
+            case R.id.education:
+                openDialog("Change education:", "Education");
+                break;
+            case R.id.about_me:
+                openDialog("Change personal info:", "AboutMe");
+                break;
+            case R.id.rate:
+                openDialog("Change rate:", "Rate");
+                break;
+        }
+    }
+
+    private void openDialog(String title, String key) {
+        if (key == "Birthday") {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this.getContext(), dplistner, 2016, 1, 1);
+            datePickerDialog.show();
+            return;
+        }
+        final String fkey = key;
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setTitle(title);
+
+        final EditText input = new EditText(view.getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+        builder.setView(input);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finalizeChange(input.getText().toString(), fkey);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    private DatePickerDialog.OnDateSetListener dplistner = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            ParseUser.getCurrentUser().put("Birthday", dayOfMonth + "/" + monthOfYear + "/" + year);
+            ParseUser.getCurrentUser().saveInBackground();
+        }
+    };
+
+    private void finalizeChange(String value, String key) {
+        if (key == "Rate") {
+            ParseUser.getCurrentUser().put(key, Double.parseDouble(value));
+        }
+        ParseUser.getCurrentUser().put(key, value);
+        ParseUser.getCurrentUser().saveInBackground();
     }
 
     int[] learningCBId = new int[] {R.id.checkBox1, R.id.checkBox2, R.id.checkBox3, R.id.checkBox4, R.id.checkBox5, R.id.checkBox6, R.id.checkBox7, R.id.checkBox8, R.id.checkBox9, R.id.checkBox10, R.id.checkBox11, R.id.checkBox12, R.id.checkBox13};
-    private void learningSubjects(View view, ParseUser user) {
+    private void learningSubjects(ParseUser user) {
         helpNeeded = (List<String>) user.get("needHelp");
         for (int id: learningCBId) {
             CheckBox cb = (CheckBox) view.findViewById(id);
@@ -135,7 +223,7 @@ public class ProfileFragment extends Fragment {
     }
 
     int[] teachingCBId = new int[] {R.id.checkBox14, R.id.checkBox15, R.id.checkBox16, R.id.checkBox17, R.id.checkBox18, R.id.checkBox19, R.id.checkBox20, R.id.checkBox21, R.id.checkBox22, R.id.checkBox23, R.id.checkBox24, R.id.checkBox25, R.id.checkBox26};
-    private void teachingSubjects(View view, ParseUser user) {
+    private void teachingSubjects(ParseUser user) {
         canHelp = (List<String>) user.get("canTeach");
         for (int id: teachingCBId) {
             CheckBox cb = (CheckBox) view.findViewById(id);
@@ -175,6 +263,30 @@ public class ProfileFragment extends Fragment {
         user.remove("canTeach");
         user.addAllUnique("canTeach", canHelp);
         user.saveInBackground();
+    }
+
+    public void changePassword(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setTitle("Enter new password");
+
+        final EditText input = new EditText(view.getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+        builder.setView(input);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ParseUser.getCurrentUser().setPassword(input.getText().toString());
+                ParseUser.getCurrentUser().saveInBackground();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 
     @Override

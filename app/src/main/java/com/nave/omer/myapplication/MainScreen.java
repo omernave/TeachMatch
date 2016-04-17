@@ -29,11 +29,6 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
-import java.io.File;
-
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
-
 public class MainScreen extends AppCompatActivity {
 
     @Override
@@ -72,7 +67,7 @@ public class MainScreen extends AppCompatActivity {
                 // Create the AccountHeader
                 final AccountHeader headerResult = new AccountHeaderBuilder()
                         .withActivity(act)
-                        .withHeaderBackground(R.drawable.teacher_background)
+                        .withHeaderBackground(R.drawable.profile_back_image)
                         .addProfiles(
                                 profile
                         )
@@ -120,6 +115,13 @@ public class MainScreen extends AppCompatActivity {
                             transaction.addToBackStack(null);
                             transaction.commit();
                         }
+
+                        if (position == 10) {
+                            ParseUser.getCurrentUser().logOut();
+                            Intent i = new Intent(getBaseContext(), FirstLaunch.class);
+                            startActivity(i);
+                        }
+
                         Log.i("log", String.valueOf(position));
                         result.closeDrawer();
                         return true;

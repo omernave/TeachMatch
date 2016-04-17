@@ -74,7 +74,8 @@
                     android:id="@+id/textView14"
                     android:layout_marginTop="8dp"
                     android:textSize="14sp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    android:onClick="changePassword" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,6 +110,15 @@
                     android:text="Hello im a good student and a good teacher please give me money now"
                     android:id="@+id/about_me"
                     android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Rate"
+                    android:id="@+id/textView10"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"

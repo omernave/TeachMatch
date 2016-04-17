@@ -48,4 +48,9 @@ public class FirstLaunch extends AppCompatActivity {
         Intent i = new Intent(getBaseContext(), RegisterScreen.class);
         startActivity(i);
     }
+
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 }

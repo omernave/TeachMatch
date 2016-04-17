@@ -38,6 +38,7 @@ public class RegisterStudent extends AppCompatActivity {
                 i.putExtra("location", data.getDoubleArrayExtra("location"));
                 i.putExtra("education", data.getStringExtra("education"));
                 i.putExtra("aboutMe", data.getStringExtra("aboutMe"));
+                i.putExtra("birthday", data.getStringExtra("birthday"));
                 i.putExtra("isLearning", true);
 
                 helpNeededFinal = helpNeeded;
@@ -51,6 +52,9 @@ public class RegisterStudent extends AppCompatActivity {
             Intent data = getIntent();
             i.putExtra("name", data.getStringExtra("name"));
             i.putExtra("email", data.getStringExtra("email"));
+            i.putExtra("education", data.getStringExtra("education"));
+            i.putExtra("aboutMe", data.getStringExtra("aboutMe"));
+            i.putExtra("birthday", data.getStringExtra("birthday"));
             i.putExtra("password", data.getStringExtra("password"));
             i.putExtra("isLearning", false);
             i.putExtra("location", data.getDoubleArrayExtra("location"));

@@ -4,6 +4,7 @@
     <shared>
       <config>
         <devices>
+          <device id="Nexus 5" />
           <device id="Nexus 10" />
           <device id="Nexus 9" />
         </devices>
@@ -11,6 +12,11 @@
       </config>
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/content_about_yourself_register.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/content_main_screen.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
@@ -29,14 +35,12 @@
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
         <config>
-          <state>Portrait</state>
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="log" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -67,89 +71,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainScreen.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/MainScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8052174">
-              <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
-              <folding>
-                <element signature="e#4222#5497#0" expanded="true" />
-                <element signature="e#5496#5497#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ProfileFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/ProfileFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="190" column="56" selection-start-line="190" selection-start-column="56" selection-end-line="190" selection-end-column="56" />
+              <caret line="278" column="62" selection-start-line="278" selection-start-column="62" selection-end-line="278" selection-end-column="62" />
               <folding>
-                <element signature="e#1475#1695#0" expanded="true" />
-                <element signature="e#1694#1695#0" expanded="true" />
-                <element signature="e#1840#2060#0" expanded="true" />
-                <element signature="e#2059#2060#0" expanded="true" />
-                <element signature="e#2214#2398#0" expanded="true" />
-                <element signature="e#2397#2398#0" expanded="true" />
+                <element signature="e#6712#7040#0" expanded="true" />
+                <element signature="e#7039#7040#0" expanded="true" />
+                <element signature="e#9811#10112#0" expanded="true" />
+                <element signature="e#10111#10112#0" expanded="true" />
+                <element signature="e#10159#10346#0" expanded="true" />
+                <element signature="e#10345#10346#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterScreen.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="27" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherListAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/TeacherListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="76" selection-end-column="11" />
-              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="fragment_profile.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="445" column="55" selection-start-line="445" selection-start-column="55" selection-end-line="445" selection-end-column="55" />
-              <folding>
-                <element signature="e#5844#13438#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
           <provider selected="true" editor-type-id="android-designer">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterTeacher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterTeacher.java">
-          <provider selected="true" editor-type-id="text-editor">
+          <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="164" selection-end-column="11" />
-              <folding />
+              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+              <folding>
+                <element signature="e#6306#13900#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterStudent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterStudent.java">
+      <file leaf-file-name="content_about_yourself_register.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_about_yourself_register.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="108" column="46" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+              <folding>
+                <element signature="e#328#361#0" expanded="true" />
+                <element signature="e#386#421#0" expanded="true" />
+                <element signature="e#447#482#0" expanded="true" />
+                <element signature="e#506#539#0" expanded="true" />
+                <element signature="e#564#604#0" expanded="true" />
+                <element signature="e#830#1981#0" expanded="false" />
+                <element signature="e#1243#1257#0" expanded="true" />
+                <element signature="e#1683#1697#0" expanded="true" />
+                <element signature="e#1995#2484#0" expanded="false" />
+                <element signature="e#2498#3016#0" expanded="false" />
+                <element signature="e#3488#4157#0" expanded="false" />
+                <element signature="e#4171#4657#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AboutYourselfRegister.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/AboutYourselfRegister.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+              <caret line="31" column="26" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="26" />
               <folding>
-                <element signature="e#2483#2484#0" expanded="true" />
-                <element signature="e#2507#2508#0" expanded="true" />
+                <element signature="e#1222#1461#0" expanded="true" />
+                <element signature="e#1460#1461#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1837,16 +1824,26 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/AboutYourselfRegister.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/teacher_card.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main_screen.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/AboutYourselfRegister.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterStudent.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterTeacher.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/ProfileFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/FirstLaunch.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/MainScreen.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_about_yourself_register.xml" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="NamedScopeManager">
@@ -1881,16 +1878,13 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="TeachMatch" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1922,6 +1916,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeachMatch" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1969,10 +1981,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1981,7 +1992,7 @@
     <property name="recentsLimit" value="5" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="LGD8559410a052" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_4_API_23" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MenuDrawer" />
+    <property name="last_opened_file_path" value="E:/Downloads/SimpleChat-master" />
     <property name="FullScreen" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.WIDTH" value="181" />
   </component>
@@ -2184,12 +2195,12 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13752665" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2222,11 +2233,141 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/MainScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/ProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="190" column="56" selection-start-line="190" selection-start-column="56" selection-end-line="190" selection-end-column="56" />
+          <folding>
+            <element signature="e#6712#7040#0" expanded="true" />
+            <element signature="e#7039#7040#0" expanded="true" />
+            <element signature="e#9811#10112#0" expanded="true" />
+            <element signature="e#10111#10112#0" expanded="true" />
+            <element signature="e#10159#10346#0" expanded="true" />
+            <element signature="e#10345#10346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="27" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/TeacherListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="76" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="445" column="55" selection-start-line="445" selection-start-column="55" selection-end-line="445" selection-end-column="55" />
+          <folding>
+            <element signature="e#6306#13900#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterTeacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="164" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/MainScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/ProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="190" column="56" selection-start-line="190" selection-start-column="56" selection-end-line="190" selection-end-column="56" />
+          <folding>
+            <element signature="e#6712#7040#0" expanded="true" />
+            <element signature="e#7039#7040#0" expanded="true" />
+            <element signature="e#9811#10112#0" expanded="true" />
+            <element signature="e#10111#10112#0" expanded="true" />
+            <element signature="e#10159#10346#0" expanded="true" />
+            <element signature="e#10345#10346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="27" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/TeacherListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="76" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="445" column="55" selection-start-line="445" selection-start-column="55" selection-end-line="445" selection-end-column="55" />
+          <folding>
+            <element signature="e#6306#13900#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterTeacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="164" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2236,23 +2377,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="130" column="29" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
           <folding>
-            <element signature="e#5844#13438#0" expanded="false" />
+            <element signature="e#6306#13900#0" expanded="false" />
           </folding>
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterTeacher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2261,12 +2401,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
           <folding>
-            <element signature="e#1475#1695#0" expanded="true" />
-            <element signature="e#1694#1695#0" expanded="true" />
-            <element signature="e#1840#2060#0" expanded="true" />
-            <element signature="e#2059#2060#0" expanded="true" />
-            <element signature="e#2214#2398#0" expanded="true" />
-            <element signature="e#2397#2398#0" expanded="true" />
+            <element signature="e#6712#7040#0" expanded="true" />
+            <element signature="e#7039#7040#0" expanded="true" />
+            <element signature="e#9811#10112#0" expanded="true" />
+            <element signature="e#10111#10112#0" expanded="true" />
+            <element signature="e#10159#10346#0" expanded="true" />
+            <element signature="e#10345#10346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2275,7 +2415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="98" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2288,38 +2427,38 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
           <folding>
-            <element signature="e#5844#13438#0" expanded="false" />
+            <element signature="e#6306#13900#0" expanded="false" />
           </folding>
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="54" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="54" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main_screen.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
@@ -2335,12 +2474,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="e#1475#1695#0" expanded="true" />
-            <element signature="e#1694#1695#0" expanded="true" />
-            <element signature="e#1840#2060#0" expanded="true" />
-            <element signature="e#2059#2060#0" expanded="true" />
-            <element signature="e#2214#2398#0" expanded="true" />
-            <element signature="e#2397#2398#0" expanded="true" />
+            <element signature="e#6712#7040#0" expanded="true" />
+            <element signature="e#7039#7040#0" expanded="true" />
+            <element signature="e#9811#10112#0" expanded="true" />
+            <element signature="e#10111#10112#0" expanded="true" />
+            <element signature="e#10159#10346#0" expanded="true" />
+            <element signature="e#10345#10346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2354,16 +2493,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5844#13438#0" expanded="false" />
+            <element signature="e#6306#13900#0" expanded="false" />
           </folding>
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/ProfileFragment.java">
@@ -2371,12 +2510,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="e#1475#1695#0" expanded="true" />
-            <element signature="e#1694#1695#0" expanded="true" />
-            <element signature="e#1840#2060#0" expanded="true" />
-            <element signature="e#2059#2060#0" expanded="true" />
-            <element signature="e#2214#2398#0" expanded="true" />
-            <element signature="e#2397#2398#0" expanded="true" />
+            <element signature="e#6712#7040#0" expanded="true" />
+            <element signature="e#7039#7040#0" expanded="true" />
+            <element signature="e#9811#10112#0" expanded="true" />
+            <element signature="e#10111#10112#0" expanded="true" />
+            <element signature="e#10159#10346#0" expanded="true" />
+            <element signature="e#10345#10346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2390,32 +2529,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_screen.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/teacher_card.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/AboutYourselfRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0295652">
-          <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/teacher_card.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="99" column="28" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
@@ -2426,36 +2558,36 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_register_teacher.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_register_student.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_first_launch.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
@@ -2467,98 +2599,42 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.9310346">
           <caret line="5" column="54" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="54" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main_screen.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/MainFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterStudent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="e#2483#2484#0" expanded="true" />
-            <element signature="e#2507#2508#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="445" column="55" selection-start-line="445" selection-start-column="55" selection-end-line="445" selection-end-column="55" />
-          <folding>
-            <element signature="e#5844#13438#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_register_screen.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="27" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterTeacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="164" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/ProfileFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="190" column="56" selection-start-line="190" selection-start-column="56" selection-end-line="190" selection-end-column="56" />
-          <folding>
-            <element signature="e#1475#1695#0" expanded="true" />
-            <element signature="e#1694#1695#0" expanded="true" />
-            <element signature="e#1840#2060#0" expanded="true" />
-            <element signature="e#2059#2060#0" expanded="true" />
-            <element signature="e#2214#2398#0" expanded="true" />
-            <element signature="e#2397#2398#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2566,17 +2642,116 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="76" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="12" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/AboutYourselfRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="26" />
+          <folding>
+            <element signature="e#1222#1461#0" expanded="true" />
+            <element signature="e#1460#1461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/ProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="278" column="62" selection-start-line="278" selection-start-column="62" selection-end-line="278" selection-end-column="62" />
+          <folding>
+            <element signature="e#6712#7040#0" expanded="true" />
+            <element signature="e#7039#7040#0" expanded="true" />
+            <element signature="e#9811#10112#0" expanded="true" />
+            <element signature="e#10111#10112#0" expanded="true" />
+            <element signature="e#10159#10346#0" expanded="true" />
+            <element signature="e#10345#10346#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8052174">
-          <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.37913042">
+          <caret line="69" column="76" selection-start-line="69" selection-start-column="76" selection-end-line="69" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/FirstLaunch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88173914">
+          <caret line="53" column="15" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
           <folding>
-            <element signature="e#4222#5497#0" expanded="true" />
-            <element signature="e#5496#5497#0" expanded="true" />
+            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#1756#1757#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/profile_back_image.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding>
+            <element signature="e#6306#13900#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nave/omer/myapplication/RegisterTeacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.5373912">
+          <caret line="140" column="55" selection-start-line="140" selection-start-column="55" selection-end-line="140" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_about_yourself_register.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="46" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+          <folding>
+            <element signature="e#328#361#0" expanded="true" />
+            <element signature="e#386#421#0" expanded="true" />
+            <element signature="e#447#482#0" expanded="true" />
+            <element signature="e#506#539#0" expanded="true" />
+            <element signature="e#564#604#0" expanded="true" />
+            <element signature="e#830#1981#0" expanded="false" />
+            <element signature="e#1243#1257#0" expanded="true" />
+            <element signature="e#1683#1697#0" expanded="true" />
+            <element signature="e#1995#2484#0" expanded="false" />
+            <element signature="e#2498#3016#0" expanded="false" />
+            <element signature="e#3488#4157#0" expanded="false" />
+            <element signature="e#4171#4657#0" expanded="false" />
           </folding>
         </state>
       </provider>
