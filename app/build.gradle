@@ -50,4 +50,7 @@ dependencies {
     compile('com.mikepenz:materialdrawer:5.0.9@aar') {
         transitive = true
     }
+
+    //Slider
+    compile 'org.adw.library:discrete-seekbar:1.0.1'
 }

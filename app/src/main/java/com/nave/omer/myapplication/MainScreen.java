@@ -116,6 +116,16 @@ public class MainScreen extends AppCompatActivity {
                             transaction.commit();
                         }
 
+                        if (position == 8) {
+                            Fragment fragment = new AppSettingsFragment();
+
+                            FragmentManager fm = getSupportFragmentManager();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            transaction.replace(R.id.fragment, fragment);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+                        }
+
                         if (position == 10) {
                             ParseUser.getCurrentUser().logOut();
                             Intent i = new Intent(getBaseContext(), FirstLaunch.class);

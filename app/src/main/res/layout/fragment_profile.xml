@@ -71,11 +71,10 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Change password"
-                    android:id="@+id/textView14"
+                    android:id="@+id/changeps"
                     android:layout_marginTop="8dp"
                     android:textSize="14sp"
-                    android:textStyle="italic"
-                    android:onClick="changePassword" />
+                    android:textStyle="italic" />
 
                 <TextView
                     android:layout_width="wrap_content"
