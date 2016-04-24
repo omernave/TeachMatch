@@ -49,7 +49,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageView4"
+                    android:id="@+id/start_chat"
                     android:src="@drawable/messages"
                     android:scaleType="fitCenter"
                     android:padding="30dp" />

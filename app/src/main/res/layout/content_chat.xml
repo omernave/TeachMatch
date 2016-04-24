@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nave.omer.myapplication.Chat"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_chat">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#ffc266"
+        android:elevation="4dp"
+        android:id="@+id/frameLayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_gravity="left|center_vertical"
+            android:src="@drawable/abc_ic_ab_back_material"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/TeachMatch"
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="28sp" />
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/pad_5dp"
+        android:fastScrollEnabled="true"
+        android:paddingBottom="@dimen/pad_10dp"
+        android:paddingTop="@dimen/pad_10dp"
+        tools:listitem="@layout/chat_item_rcv" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/gray_light"
+        android:gravity="center_vertical"
+        android:padding="@dimen/pad_5dp"
+        tools:context=".MainActivity" >
+
+
+        <EditText
+            android:id="@+id/txt"
+            style="@style/edittext_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type Message..." >
+
+
+        </EditText>
+
+        <Button
+            android:id="@+id/btnSend"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_send" />
+
+    </LinearLayout>
+
+</LinearLayout>

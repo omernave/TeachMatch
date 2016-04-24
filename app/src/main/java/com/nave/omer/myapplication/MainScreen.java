@@ -2,6 +2,7 @@ package com.nave.omer.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -106,6 +107,15 @@ public class MainScreen extends AppCompatActivity {
                             transaction.commit();
                         }
 
+                        if (position == 2) {
+                            Fragment fragment = new MessagesFragment();
+
+                            FragmentManager fm = getSupportFragmentManager();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            transaction.replace(R.id.fragment, fragment);
+                            transaction.commit();
+                        }
+
                         if (position == 7) {
                             Fragment fragment = new ProfileFragment();
 
@@ -127,6 +137,12 @@ public class MainScreen extends AppCompatActivity {
                         }
 
                         if (position == 10) {
+                            SharedPreferences preferences = getSharedPreferences("chat", 0);
+                            preferences.edit().clear().commit();
+
+                            SharedPreferences preferences2 = getSharedPreferences("settings", 0);
+                            preferences.edit().clear().commit();
+
                             ParseUser.getCurrentUser().logOut();
                             Intent i = new Intent(getBaseContext(), FirstLaunch.class);
                             startActivity(i);

@@ -1,5 +1,7 @@
 package com.nave.omer.myapplication;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -34,9 +36,9 @@ public class MainFragment extends Fragment {
     }
 
     //Get relevant teachers
-    byte[] image;
     private void getAvalibleTeacherList() {
-        int SEARCHRADIUS = 10;
+        SharedPreferences mPrefs = getContext().getSharedPreferences("settings", 0);
+        int SEARCHRADIUS = mPrefs.getInt("radius", 10);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereWithinKilometers("Location", (ParseGeoPoint) ParseUser.getCurrentUser().get("Location"), SEARCHRADIUS);

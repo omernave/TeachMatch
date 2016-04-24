@@ -1,6 +1,7 @@
 package com.nave.omer.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,9 @@ import io.techery.properratingbar.ProperRatingBar;
  * Created by omer on 14/02/16.
  */
 class TeacherListAdapter extends ArrayAdapter<ParseUser> {
+
+    String email = "";
+
     public TeacherListAdapter(Context context, ParseUser[] values) {
         super(context, R.layout.teacher_card, values);
     }
@@ -36,6 +40,19 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
         View cellView = inflater.inflate(R.layout.teacher_card, parent, false);
 
         ParseUser teacher = getItem(position);
+
+        email = teacher.getEmail();
+
+        ImageView chat = (ImageView) cellView.findViewById(R.id.start_chat);
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Chat.class);
+                i.putExtra("email", email);
+
+                getContext().startActivity(i);
+            }
+        });
 
         TextView name = (TextView) cellView.findViewById(R.id.teacherName);
         name.setText((String) teacher.get("Name"));
