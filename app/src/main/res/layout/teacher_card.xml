@@ -34,7 +34,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageView3"
+                    android:id="@+id/more_info"
                     android:src="@drawable/education"
                     android:scaleType="fitCenter"
                     android:padding="30dp" />

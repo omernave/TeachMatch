@@ -9,17 +9,17 @@
 
     <LinearLayout
             android:id="@+id/v1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/pad_10dp"
-            android:background="@drawable/chat_bubble_green"
-            android:gravity="center_vertical"
+            android:layout_marginLeft="35dp"
+        android:gravity="center_vertical"
             android:orientation="vertical"
             android:paddingBottom="@dimen/pad_5dp"
             android:paddingLeft="@dimen/pad_15dp"
             android:paddingRight="@dimen/pad_chat_item"
-            android:paddingTop="@dimen/pad_5dp" >
+            android:paddingTop="@dimen/pad_5dp"
+        android:background="@drawable/chat_bubble_green">
 
             <TextView
                 android:id="@+id/lbl1"
@@ -27,15 +27,16 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txt_13sp" />
+                android:textSize="@dimen/txt_13sp"
+                android:textStyle="bold|italic" />
             <TextView
                 android:id="@+id/lbl2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="sd"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txt_14sp" 
-                android:maxLines="4"/>
+                android:textSize="@dimen/txt_14sp"
+                android:maxLines="4" />
 
         </LinearLayout>
 

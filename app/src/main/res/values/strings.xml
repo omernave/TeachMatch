@@ -22,5 +22,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_check_stuff">CheckStuff</string>
     <string name="title_activity_chat">Chat</string>
+    <string name="title_activity_more_about_teacher">MoreAboutTeacher</string>
 
 </resources>

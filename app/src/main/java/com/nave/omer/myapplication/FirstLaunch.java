@@ -1,5 +1,6 @@
 package com.nave.omer.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,6 +30,10 @@ public class FirstLaunch extends AppCompatActivity {
     }
 
     public void login(View view) {
+        final ProgressDialog mDialog = new ProgressDialog(FirstLaunch.this);
+        mDialog.setMessage("Logging in...");
+        mDialog.setCancelable(false);
+        mDialog.show();
         //Get login data
         String email = ((EditText) findViewById(R.id.emailLogin)).getText().toString();
         String pass = ((EditText) findViewById(R.id.passwordLogin)).getText().toString();
@@ -37,6 +42,7 @@ public class FirstLaunch extends AppCompatActivity {
         ParseUser.logInInBackground(email, pass, new LogInCallback() {
             @Override
             public void done(ParseUser user, com.parse.ParseException e) {
+                mDialog.dismiss();
                 if (user != null) {
                     checkSentMessages();
                     Intent i = new Intent(getBaseContext(), MainScreen.class);
@@ -74,7 +80,7 @@ public class FirstLaunch extends AppCompatActivity {
                 if (e == null) {
                     for (ParseObject obj : li) {
                         if (!recList.contains(obj.get("receiver"))) {
-                            recList.add(obj.get("sender").toString());
+                            recList.add(obj.get("receiver").toString());
                         }
                     }
 

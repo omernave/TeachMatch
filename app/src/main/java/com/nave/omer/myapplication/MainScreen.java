@@ -48,6 +48,7 @@ public class MainScreen extends AppCompatActivity {
         setupMenuDrawer();
     }
 
+    Drawer result;
     private void setupMenuDrawer() {
         final Activity act = this;
         final ParseUser user = ParseUser.getCurrentUser();
@@ -76,7 +77,7 @@ public class MainScreen extends AppCompatActivity {
                         .build();
 
                 //create the drawer and remember the `Drawer` result object
-                final Drawer result = new DrawerBuilder()
+                result = new DrawerBuilder()
                         .withActivity(act)
                         .withSelectedItem(-1)
                         .addDrawerItems(
@@ -155,5 +156,9 @@ public class MainScreen extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public void openMenu(View view) {
+        result.openDrawer();
     }
 }

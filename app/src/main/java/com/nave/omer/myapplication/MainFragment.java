@@ -1,5 +1,6 @@
 package com.nave.omer.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import java.util.List;
 public class MainFragment extends Fragment {
 
     ListView list;
+    ProgressDialog mDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,6 +39,10 @@ public class MainFragment extends Fragment {
 
     //Get relevant teachers
     private void getAvalibleTeacherList() {
+        mDialog = new ProgressDialog(getContext());
+        mDialog.setMessage("Loading teachers...");
+        mDialog.setCancelable(false);
+        mDialog.show();
         SharedPreferences mPrefs = getContext().getSharedPreferences("settings", 0);
         int SEARCHRADIUS = mPrefs.getInt("radius", 10);
 
@@ -68,5 +74,6 @@ public class MainFragment extends Fragment {
         //Set adapter
         TeacherListAdapter adapter = new TeacherListAdapter(getContext(), teacherObjects);
         list.setAdapter(adapter);
+        mDialog.dismiss();
     }
 }

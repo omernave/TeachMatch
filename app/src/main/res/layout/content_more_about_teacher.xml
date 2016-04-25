@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.nave.omer.myapplication.MoreAboutTeacher"
+    tools:showIn="@layout/activity_more_about_teacher">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#ffc266"
+        android:elevation="4dp"
+        android:id="@+id/frameLayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_gravity="left|center_vertical"
+            android:src="@drawable/abc_ic_ab_back_material"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="16dp"
+            android:onClick="back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/TeachMatch"
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="28sp" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frameLayout">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/frameLayout"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="160dp"
+                    android:id="@+id/profile"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/profile_placeholder"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Omer Nave"
+                    android:id="@+id/name"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="omernave65@gmail.com"
+                    android:id="@+id/email"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="30/11/1997"
+                    android:id="@+id/bday"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp"
+                    android:textSize="16sp" />
+
+                <io.techery.properratingbar.ProperRatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:prb_defaultRating="4"
+                    app:prb_symbolicTick="\u2605"
+                    app:prb_symbolicTickNormalColor="@android:color/darker_gray"
+                    app:prb_symbolicTickSelectedColor="#ede727"
+                    app:prb_totalTicks="5"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/ratingBar" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Hello, im a good teacher. I can teach math, physics and english. I have good education and perfect English. HIRE ME PLS."
+                    android:id="@+id/about_me"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Studies"
+                    android:id="@+id/textView22"
+                    android:layout_marginTop="14dp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Math, Physics, English"
+                    android:id="@+id/studies" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Teaches"
+                        android:id="@+id/textView24"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="$6.50/Hour"
+                        android:id="@+id/rate"
+                        android:gravity="right"
+                        android:layout_marginRight="4dp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Computer Science, Biology"
+                    android:id="@+id/teaches" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Your rating"
+                    android:id="@+id/textView16"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp" />
+
+                <io.techery.properratingbar.ProperRatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="34sp"
+                    android:textStyle="bold"
+                    app:prb_defaultRating="0"
+                    app:prb_symbolicTick="\u2605"
+                    app:prb_symbolicTickNormalColor="@android:color/darker_gray"
+                    app:prb_symbolicTickSelectedColor="#ede727"
+                    app:prb_totalTicks="5"
+                    app:prb_clickable="true"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/your_rating" />
+
+            </LinearLayout>
+
+        </TableLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

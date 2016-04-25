@@ -11,13 +11,7 @@ public class App extends Application{
 
         //Initialize parse database
 
-        //Parse.enableLocalDatastore(this);
-        //Parse.initialize(this);
-
-        Parse.initialize(new Parse.Configuration.Builder(this)
-                        .applicationId("soGhecMgERCcHZ5by5lcW02UwimTLGTjHWiyOcl0")
-                        .clientKey("vicKOMZ50gPti7Nj6CxryMIpWVqkvIDNaSgnl2yY")
-                        .build()
-        );
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "soGhecMgERCcHZ5by5lcW02UwimTLGTjHWiyOcl0", "vicKOMZ50gPti7Nj6CxryMIpWVqkvIDNaSgnl2yY");
     }
 }

@@ -1,5 +1,6 @@
 package com.nave.omer.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
@@ -123,13 +125,25 @@ public class RegisterTeacher extends AppCompatActivity {
     //Register user to Parse database
     ParseUser user = new ParseUser();
     private void finalizeRegister(String name, String password, String email, List<String> canTeach, List<String> needHelp, double rate, byte[] image, double[] location, String education, String about, String date) {
+        final ProgressDialog mDialog = new ProgressDialog(RegisterTeacher.this);
+        mDialog.setMessage("Registering...");
+        mDialog.setCancelable(false);
+        mDialog.show();
+
         user.setUsername(email);
         user.setPassword(password);
         user.setEmail(email.toLowerCase());
 
         user.put("Name", name);
         user.put("Rate", rate);
-        user.put("Rating", 0);
+
+        //Set new rating object
+        ParseObject ratings = new ParseObject("Ratings");
+        ratings.put("email", email);
+        ratings.put("Sum", 0);
+        ratings.put("numOfVoters", 0);
+        ratings.saveInBackground();
+
         user.put("Location", new ParseGeoPoint(location[0], location[1]));
         user.put("AboutMe", about);
         user.put("Education", education);
@@ -150,6 +164,7 @@ public class RegisterTeacher extends AppCompatActivity {
                     user.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(com.parse.ParseException e) {
+                            mDialog.dismiss();
                             //If successful go to main screen
                             if (e == null) {
                                 Intent i = new Intent(getBaseContext(), MainScreen.class);
@@ -161,6 +176,7 @@ public class RegisterTeacher extends AppCompatActivity {
                         }
                     });
                 } else {
+                    mDialog.dismiss();
                     Toast.makeText(getBaseContext(), "Register unsuccessful", Toast.LENGTH_SHORT).show();
                 }
             }

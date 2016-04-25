@@ -22,7 +22,8 @@
             android:layout_gravity="left|center_vertical"
             android:src="@drawable/abc_ic_ab_back_material"
             android:scaleType="fitXY"
-            android:layout_marginLeft="16dp" />
+            android:layout_marginLeft="16dp"
+            android:onClick="back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,10 +40,10 @@
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:divider="@color/white"
-        android:dividerHeight="@dimen/pad_5dp"
+        android:dividerHeight="0dp"
         android:fastScrollEnabled="true"
         android:paddingBottom="@dimen/pad_10dp"
         android:paddingTop="@dimen/pad_10dp"
@@ -64,7 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type Message..." >
+            android:hint="Type Message..."
+            android:maxLength="120">
 
 
         </EditText>

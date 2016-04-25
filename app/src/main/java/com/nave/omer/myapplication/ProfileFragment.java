@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -54,6 +55,7 @@ public class ProfileFragment extends Fragment {
     ImageView image;
     View view;
     TextView name, email, birthday, education, aboutMe, rate;
+    ProgressDialog mDialog;
 
     int[] fieldsId = new int[] {R.id.name, R.id.birthday, R.id.education, R.id.about_me, R.id.rate};
 
@@ -116,6 +118,11 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setupPage(View view) {
+        mDialog = new ProgressDialog(getContext());
+        mDialog.setMessage("Loading profile...");
+        mDialog.setCancelable(false);
+        mDialog.show();
+
         ParseUser user = ParseUser.getCurrentUser();
 
         personalInfo(user);
@@ -251,7 +258,7 @@ public class ProfileFragment extends Fragment {
                 acheck = true;
                 ParseUser.getCurrentUser().put(key, value);
                 ParseUser.getCurrentUser().saveInBackground();
-            } else {
+            } else if (key == "Name") {
                 if (acheck) {
                     Toast.makeText(this.getContext(), "Please enter full name", Toast.LENGTH_SHORT).show();
                     check = false;
@@ -261,7 +268,7 @@ public class ProfileFragment extends Fragment {
                 acheck = true;
                 ParseUser.getCurrentUser().put(key, value);
                 ParseUser.getCurrentUser().saveInBackground();
-            } else {
+            } else if (key == "AboutMe") {
                 if (acheck) {
                     Toast.makeText(this.getContext(), "Please enter at least 20 words", Toast.LENGTH_SHORT).show();
                     check = false;
@@ -305,6 +312,8 @@ public class ProfileFragment extends Fragment {
                 cb.setChecked(true);
             }
         }
+
+        mDialog.dismiss();
     }
 
     public void learnCBClicked(View view) {

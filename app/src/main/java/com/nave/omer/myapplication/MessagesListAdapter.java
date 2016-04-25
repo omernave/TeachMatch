@@ -86,4 +86,6 @@ public class MessagesListAdapter extends ArrayAdapter<ParseUser> {
 
         return cellView;
     }
+
+
 }

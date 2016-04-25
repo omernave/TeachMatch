@@ -1,6 +1,9 @@
 package com.nave.omer.myapplication;
 
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.ParseObject;
@@ -25,6 +30,7 @@ public class MessagesFragment extends Fragment {
 
     View view;
     ListView list;
+    ProgressDialog mDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +38,25 @@ public class MessagesFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_messages, container, false);
 
+        mDialog = new ProgressDialog(getContext());
+        mDialog.setMessage("Loading messages...");
+        mDialog.setCancelable(false);
+        mDialog.show();
+
         list = (ListView) view.findViewById(R.id.conversations);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ParseUser item = (ParseUser) list.getItemAtPosition(position);
+                String email = (String) item.getEmail();
+
+                Intent i = new Intent(getContext(), Chat.class);
+                i.putExtra("email", email);
+
+                getContext().startActivity(i);
+            }
+        });
 
         checkReceivedMessages();
 
@@ -68,13 +92,15 @@ public class MessagesFragment extends Fragment {
                     mEditor.putStringSet("MessagedTo", new HashSet<String>(recList)).commit();
 
                     getRecipients();
+                } else {
+                    mDialog.dismiss();
                 }
             }
         });
     }
 
     public void getRecipients() {
-        SharedPreferences mPrefs = this.getContext().getSharedPreferences("chat", 0);
+        final SharedPreferences mPrefs = this.getContext().getSharedPreferences("chat", 0);
         Set<String> recipients = mPrefs.getStringSet("MessagedTo", null);
         List<String> recList = new ArrayList<String>();
 
@@ -92,6 +118,8 @@ public class MessagesFragment extends Fragment {
             public void done(List<ParseUser> objects, com.parse.ParseException e) {
                 if (e == null) {
                     setupList(objects);
+                } else {
+                    mDialog.dismiss();
                 }
             }
         });
@@ -109,5 +137,7 @@ public class MessagesFragment extends Fragment {
         //Set adapter
         MessagesListAdapter adapter = new MessagesListAdapter(getContext(), arr);
         this.list.setAdapter(adapter);
+
+        mDialog.dismiss();
     }
 }

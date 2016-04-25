@@ -1,5 +1,6 @@
 package com.nave.omer.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import java.util.Set;
 
 public class Chat extends CustomActivity {
 
+    ProgressDialog mDialog;
 
     /** The Conversation list. */
     private ArrayList<Conversation> convList;
@@ -88,6 +90,10 @@ public class Chat extends CustomActivity {
         buddy = getIntent().getStringExtra("email");
 
         handler = new Handler();
+    }
+
+    public void back(View view) {
+        finish();
     }
 
     /* (non-Javadoc)
@@ -195,6 +201,10 @@ public class Chat extends CustomActivity {
         ParseQuery<ParseObject> q = ParseQuery.getQuery("Chat");
         if (convList.size() == 0)
         {
+            mDialog = new ProgressDialog(Chat.this);
+            mDialog.setMessage("Loading chat...");
+            mDialog.setCancelable(false);
+            mDialog.show();
             // load all messages...
             ArrayList<String> al = new ArrayList<String>();
             al.add(buddy);
@@ -232,6 +242,7 @@ public class Chat extends CustomActivity {
                         adp.notifyDataSetChanged();
                     }
                 }
+                mDialog.dismiss();
                 handler.postDelayed(new Runnable() {
 
                     @Override

@@ -8,7 +8,9 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/conversations"
-        android:layout_gravity="left|top" />
+        android:layout_gravity="left|top"
+        tools:listitem="@layout/message_list_item"
+        android:divider="@color/accent_material_light" />
 </FrameLayout>
