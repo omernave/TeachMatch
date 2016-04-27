@@ -34,7 +34,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_about_teacher);
 
-        mDialog = new ProgressDialog(getApplicationContext());
+        mDialog = new ProgressDialog(MoreAboutTeacher.this);
         mDialog.setMessage("Loading profile...");
         mDialog.setCancelable(false);
         mDialog.show();
@@ -56,7 +56,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
     public void setupPage(ParseUser puser) {
         final ParseUser user = puser;
         name = (TextView) findViewById(R.id.name);
-        email = (TextView) findViewById(R.id.email);
+        email = (TextView) findViewById(R.id.date);
         bday = (TextView) findViewById(R.id.bday);
         aboutMe = (TextView) findViewById(R.id.about_me);
         studies = (TextView) findViewById(R.id.studies);

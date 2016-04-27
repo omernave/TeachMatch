@@ -81,7 +81,7 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:id="@+id/email"
+            android:id="@+id/date"
             android:hint="@string/Email"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="5dp"

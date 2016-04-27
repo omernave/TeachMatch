@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Omernave65@gmail.com"
-                    android:id="@+id/email"
+                    android:id="@+id/date"
                     android:layout_marginTop="4dp" />
 
                 <TextView

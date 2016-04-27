@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -99,7 +98,7 @@ public class RegisterScreen extends AppCompatActivity {
     //Go to RegisterStudent
     public void next(View view) {
         EditText name = (EditText) findViewById(R.id.name);
-        EditText email = (EditText) findViewById(R.id.email);
+        EditText email = (EditText) findViewById(R.id.date);
         EditText password = (EditText) findViewById(R.id.password);
 
         boolean formReady = true;

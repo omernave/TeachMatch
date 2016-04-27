@@ -23,5 +23,23 @@
     <string name="title_activity_check_stuff">CheckStuff</string>
     <string name="title_activity_chat">Chat</string>
     <string name="title_activity_more_about_teacher">MoreAboutTeacher</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_create_new_lesson">CreateNewLesson</string>
+
+    <string-array name="subjects_array">
+        <item>Math</item>
+        <item>History</item>
+        <item>Computer Science</item>
+        <item>Civics</item>
+        <item>Literature</item>
+        <item>English</item>
+        <item>Bible</item>
+        <item>Grammar</item>
+        <item>Electronics</item>
+        <item>Chemistry</item>
+        <item>Physics</item>
+        <item>Biology</item>
+        <item>Cyber</item>
+    </string-array>
 
 </resources>

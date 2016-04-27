@@ -65,7 +65,6 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), MoreAboutTeacher.class);
                 i.putExtra("email", email);
-
                 getContext().startActivity(i);
             }
         });

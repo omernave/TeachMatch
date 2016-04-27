@@ -1,8 +1,11 @@
 package com.nave.omer.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -84,8 +87,7 @@ public class MainScreen extends AppCompatActivity {
                                 new PrimaryDrawerItem().withName("Find Teachers"),
                                 new PrimaryDrawerItem().withName("Messages"),
                                 new SectionDrawerItem().withName("Meetings"),
-                                new PrimaryDrawerItem().withName("Future Meetings"),
-                                new PrimaryDrawerItem().withName("History"),
+                                new PrimaryDrawerItem().withName("Planned Lessons"),
                                 new SectionDrawerItem().withName("Settings"),
                                 new PrimaryDrawerItem().withName("Profile"),
                                 new PrimaryDrawerItem().withName("General"),
@@ -117,7 +119,16 @@ public class MainScreen extends AppCompatActivity {
                             transaction.commit();
                         }
 
-                        if (position == 7) {
+                        if (position == 4) {
+                            Fragment fragment = new MeetingsFragment();
+
+                            FragmentManager fm = getSupportFragmentManager();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            transaction.replace(R.id.fragment, fragment);
+                            transaction.commit();
+                        }
+
+                        if (position == 6) {
                             Fragment fragment = new ProfileFragment();
 
                             FragmentManager fm = getSupportFragmentManager();
@@ -127,7 +138,7 @@ public class MainScreen extends AppCompatActivity {
                             transaction.commit();
                         }
 
-                        if (position == 8) {
+                        if (position == 7) {
                             Fragment fragment = new AppSettingsFragment();
 
                             FragmentManager fm = getSupportFragmentManager();
@@ -137,12 +148,20 @@ public class MainScreen extends AppCompatActivity {
                             transaction.commit();
                         }
 
-                        if (position == 10) {
+                        if (position == 9) {
                             SharedPreferences preferences = getSharedPreferences("chat", 0);
                             preferences.edit().clear().commit();
 
                             SharedPreferences preferences2 = getSharedPreferences("settings", 0);
                             preferences.edit().clear().commit();
+
+                            SQLiteDatabase eventsDB = openOrCreateDatabase("Events", Context.MODE_PRIVATE, null);
+
+                            try {
+                                eventsDB.execSQL("DELETE * FROM Lessons");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
 
                             ParseUser.getCurrentUser().logOut();
                             Intent i = new Intent(getBaseContext(), FirstLaunch.class);

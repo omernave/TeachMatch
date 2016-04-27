@@ -1,16 +1,12 @@
 package com.nave.omer.myapplication;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
@@ -26,18 +22,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.GetDataCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-import com.parse.SignUpCallback;
 
 import java.io.File;
-import java.lang.annotation.Target;
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -138,7 +128,7 @@ public class ProfileFragment extends Fragment {
 
     private void personalInfo(ParseUser user) {
         name = (TextView) view.findViewById(R.id.name);
-        email = (TextView) view.findViewById(R.id.email);
+        email = (TextView) view.findViewById(R.id.date);
         birthday = (TextView) view.findViewById(R.id.birthday);
         final ImageView image = (ImageView) view.findViewById(R.id.profile);
 
@@ -179,7 +169,7 @@ public class ProfileFragment extends Fragment {
             case R.id.name:
                 openDialog("Change name:", "Name");
                 break;
-            case R.id.email:
+            case R.id.date:
                 Toast.makeText(getActivity(), "You can't change your email address",
                         Toast.LENGTH_LONG).show();
             case R.id.birthday:

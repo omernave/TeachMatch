@@ -16,6 +16,8 @@
         android:name="android.location.GpsSatellite"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -29,6 +31,9 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="vicKOMZ50gPti7Nj6CxryMIpWVqkvIDNaSgnl2yY" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDF0Yt60Nc0fYt2QG5Q0IdPyoCv5iQafA4" />
 
         <activity
             android:name=".FirstLaunch"
@@ -105,6 +110,10 @@
         <activity
             android:name=".MoreAboutTeacher"
             android:label="@string/title_activity_more_about_teacher"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateNewLesson"
+            android:label="@string/title_activity_create_new_lesson"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

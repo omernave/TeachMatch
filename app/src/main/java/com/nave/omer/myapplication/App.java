@@ -1,7 +1,6 @@
 package com.nave.omer.myapplication;
 
 import android.app.Application;
-
 import com.parse.Parse;
 
 public class App extends Application{
