@@ -2,32 +2,14 @@ package com.nave.omer.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.daimajia.swipe.SwipeLayout;
-import com.parse.FindCallback;
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import io.techery.properratingbar.ProperRatingBar;
 
 /**
  * Created by omer on 4/27/2016.
@@ -66,11 +48,9 @@ public class LessonsAdapter extends ArrayAdapter<String[]> {
         TextView time = (TextView) cellView.findViewById(R.id.time);
         TextView loca = (TextView) cellView.findViewById(R.id.location);
 
-        Log.i("log" , "data - " + data[0] + " " + data[1] + " "+ data[2] + " "+ data[3] + " "+ data[4] + " "+ data[5]);
-
         sub.setText(data[0] + " lesson");
         teacher.setText(data[1]);
-        rate.setText(data[5]);
+        rate.setText("$" + data[5] + "/Hour");
         date.setText(data[2]);
         time.setText(data[3]);
         loca.setText(data[4]);

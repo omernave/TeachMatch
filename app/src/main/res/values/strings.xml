@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">TeachMatch</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_splash">My Application</string>
     <string name="title_activity_login">Login</string>
@@ -41,5 +41,6 @@
         <item>Biology</item>
         <item>Cyber</item>
     </string-array>
+    <string name="title_activity_create_lesson">CreateLesson</string>
 
 </resources>

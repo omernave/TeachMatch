@@ -22,13 +22,13 @@
     <Switch
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Messages"
+        android:text="Enable"
         android:id="@+id/switch1"
         android:layout_below="@+id/textView13"
         android:layout_alignStart="@+id/textView13"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="8dp"
-        android:checked="false"
+        android:checked="true"
         android:textSize="16dp" />
 
     <TextView
