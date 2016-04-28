@@ -44,17 +44,15 @@ public class MainFragment extends Fragment {
         mDialog.setCancelable(false);
         mDialog.show();
         SharedPreferences mPrefs = getContext().getSharedPreferences("settings", 0);
-        int SEARCHRADIUS = mPrefs.getInt("radius", 10);
+        int SEARCH_RADIUS = mPrefs.getInt("radius", 10);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereWithinKilometers("Location", (ParseGeoPoint) ParseUser.getCurrentUser().get("Location"), SEARCHRADIUS);
+        query.whereWithinKilometers("Location", (ParseGeoPoint) ParseUser.getCurrentUser().get("Location"), SEARCH_RADIUS);
         query.whereContainedIn("canTeach", (ArrayList<String>) ParseUser.getCurrentUser().get("needHelp"));
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
                     setupList(objects);
-                } else {
-                    Log.i("log", "ERROR");
                 }
             }
         });

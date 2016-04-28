@@ -17,16 +17,19 @@ public class AboutYourselfRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_yourself_register);
 
+        //Get TextViews
         edu = (TextView) findViewById(R.id.education);
         about = (TextView) findViewById(R.id.aboutme);
         date = (TextView) findViewById(R.id.date);
     }
 
+    //Open dialog to choose date
     public void openDialog(View view) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, dplistner, 2016, 1, 1);
         datePickerDialog.show();
     }
 
+    //DateSetListener
     private DatePickerDialog.OnDateSetListener dplistner = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -34,13 +37,14 @@ public class AboutYourselfRegister extends AppCompatActivity {
         }
     };
 
+    //Go to RegisterStudent
     public void next(View view) {
         String school = edu.getText().toString();
         String[] aboutArr = about.getText().toString().split(" ");
 
         boolean isReady = true;
 
-        //Validate
+        //Validate form
         if (school == "") {
             edu.setError("Please fill this field");
             isReady = false;
@@ -54,7 +58,7 @@ public class AboutYourselfRegister extends AppCompatActivity {
             isReady = false;
         }
 
-        //Go to student register
+        //Save data + Go to student register
         if (isReady) {
             Intent i = new Intent(getBaseContext(), RegisterStudent.class);
             Intent data = getIntent();

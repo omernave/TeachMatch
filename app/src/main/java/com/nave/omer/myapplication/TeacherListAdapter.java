@@ -3,8 +3,6 @@ package com.nave.omer.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +18,6 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,36 +41,43 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         final View cellView = inflater.inflate(R.layout.teacher_card, parent, false);
 
+        //Get teacher user
         final ParseUser teacher = getItem(position);
 
+        //Get Email
         email = teacher.getEmail();
 
+        //Go to Chat with teacher
         ImageView chat = (ImageView) cellView.findViewById(R.id.start_chat);
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Open Chat and pass teacher email
                 Intent i = new Intent(getContext(), Chat.class);
                 i.putExtra("email", email);
                 getContext().startActivity(i);
             }
         });
 
+        //Go to MoreAboutTeacher
         ImageView moreInfo = (ImageView) cellView.findViewById(R.id.more_info);
         moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Open MoreAboutTeacher and pass email
                 Intent i = new Intent(getContext(), MoreAboutTeacher.class);
                 i.putExtra("email", email);
                 getContext().startActivity(i);
             }
         });
 
+        //Set fields
         TextView name = (TextView) cellView.findViewById(R.id.teacherName);
         name.setText((String) teacher.get("Name"));
 
-        //Check if not null!!!
         TextView teaches = (TextView) cellView.findViewById(R.id.teaches);
 
+        //Get relevant teaching subjects
         List<String> relevant = new ArrayList<String>();
         List<String> needed = (List<String>) ParseUser.getCurrentUser().get("needHelp");
         List<String> teachSList = (List<String>) teacher.get("canTeach");
@@ -89,7 +92,6 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
 
         teaches.setText(relevant.toString().substring(1, relevant.toString().length() - 1));
 
-        //Check if not null!!!
         TextView education = (TextView) cellView.findViewById(R.id.education);
         education.setText((String) teacher.get("Education"));
 
@@ -99,6 +101,7 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
         ratingBar.setAlpha(0);
         noRating.setAlpha(0);
 
+        //Get rating
         ParseQuery<ParseObject> q = new ParseQuery<ParseObject>("Ratings");
         q.whereEqualTo("email", teacher.getEmail());
         q.findInBackground(new FindCallback<ParseObject>() {
@@ -126,6 +129,7 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
             }
         });
 
+        //Get profile image
         final ImageView image = (ImageView) cellView.findViewById(R.id.profile);
 
         ParseFile applicantResume = (ParseFile) teacher.get("Profile");
@@ -145,43 +149,6 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
 
         //set show mode.
         swipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
-
-        //add drag edge.(If the BottomView has 'layout_gravity' attribute, this line is unnecessary)
-        //swipeLayout.addDrag(SwipeLayout.DragEdge.Left, cellView.findViewById(R.id.bg1));
-        //swipeLayout.addDrag(SwipeLayout.DragEdge.Right, cellView.findViewById(R.id.bg2));
-
-        swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
-            @Override
-            public void onClose(SwipeLayout layout) {
-                //when the SurfaceView totally cover the BottomView.
-            }
-
-            @Override
-            public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
-                //you are swiping.
-            }
-
-            @Override
-            public void onStartOpen(SwipeLayout layout) {
-
-            }
-
-            @Override
-            public void onOpen(SwipeLayout layout) {
-                //when the BottomView totally show.
-            }
-
-            @Override
-            public void onStartClose(SwipeLayout layout) {
-
-            }
-
-            @Override
-            public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
-                //when user's hand released.
-            }
-        });
-
 
         return cellView;
     }

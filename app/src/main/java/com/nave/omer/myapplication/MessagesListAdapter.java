@@ -35,8 +35,10 @@ public class MessagesListAdapter extends ArrayAdapter<ParseUser> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View cellView = inflater.inflate(R.layout.message_list_item, parent, false);
 
+        //get user
         ParseUser user = getItem(position);
 
+        //Set profile image
         final ImageView pro = (ImageView) cellView.findViewById(R.id.profile);
 
         ParseFile applicantResume = (ParseFile) user.get("Profile");
@@ -51,13 +53,14 @@ public class MessagesListAdapter extends ArrayAdapter<ParseUser> {
             }
         });
 
+        //Set name
         TextView name = (TextView) cellView.findViewById(R.id.name);
         name.setText(user.get("Name").toString());
 
         final TextView mess = (TextView) cellView.findViewById(R.id.last);
-
         final TextView time = (TextView) cellView.findViewById(R.id.time);
 
+        //Create query to get last message in chat
         ParseQuery<ParseObject> q = ParseQuery.getQuery("Chat");
 
         ArrayList<String> al = new ArrayList<String>();
@@ -73,6 +76,7 @@ public class MessagesListAdapter extends ArrayAdapter<ParseUser> {
             @Override
             public void done(List<ParseObject> li, ParseException e) {
                 if (e == null) {
+                    //Set last message and time labels
                     mess.setText(li.get(0).get("message").toString());
 
                     String date = li.get(0).getCreatedAt().toString();

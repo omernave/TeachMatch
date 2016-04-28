@@ -170,7 +170,6 @@ public class RegisterTeacher extends AppCompatActivity {
                                 Intent i = new Intent(getBaseContext(), MainScreen.class);
                                 startActivity(i);
                             } else {
-                                Log.i("log", e.toString());
                                 Toast.makeText(getBaseContext(), "Register unsuccessful", Toast.LENGTH_SHORT).show();
                             }
                         }

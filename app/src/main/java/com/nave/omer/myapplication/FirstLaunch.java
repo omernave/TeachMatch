@@ -30,10 +30,12 @@ public class FirstLaunch extends AppCompatActivity {
     }
 
     public void login(View view) {
+        //Show activity indicator
         final ProgressDialog mDialog = new ProgressDialog(FirstLaunch.this);
         mDialog.setMessage("Logging in...");
         mDialog.setCancelable(false);
         mDialog.show();
+
         //Get login data
         String email = ((EditText) findViewById(R.id.emailLogin)).getText().toString();
         String pass = ((EditText) findViewById(R.id.passwordLogin)).getText().toString();
@@ -59,6 +61,7 @@ public class FirstLaunch extends AppCompatActivity {
         });
     }
 
+    //Get users current user sent messages to
     List<String> recList = new ArrayList<String>();
     private void checkSentMessages() {
         final SharedPreferences mPrefs = getApplicationContext().getSharedPreferences("chat", 0);
@@ -97,6 +100,7 @@ public class FirstLaunch extends AppCompatActivity {
         startActivity(i);
     }
 
+    //Disable back button
     @Override
     public void onBackPressed() {
         return;

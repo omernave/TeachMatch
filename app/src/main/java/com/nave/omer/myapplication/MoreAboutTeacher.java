@@ -34,16 +34,19 @@ public class MoreAboutTeacher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_about_teacher);
 
+        //Show activity indicator
         mDialog = new ProgressDialog(MoreAboutTeacher.this);
         mDialog.setMessage("Loading profile...");
         mDialog.setCancelable(false);
         mDialog.show();
 
+        //Get teacher user
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("email", getIntent().getStringExtra("email"));
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
+                    //Setup page with user data
                     setupPage(objects.get(0));
                 } else {
                     Toast.makeText(getApplicationContext(), "Check internet connection", Toast.LENGTH_SHORT).show();
@@ -54,6 +57,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
     }
 
     public void setupPage(ParseUser puser) {
+        //Get all fields
         final ParseUser user = puser;
         name = (TextView) findViewById(R.id.name);
         email = (TextView) findViewById(R.id.date);
@@ -66,6 +70,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
         yourRating = (ProperRatingBar) findViewById(R.id.your_rating);
         profile = (ImageView) findViewById(R.id.profile);
 
+        //Set text in fields
         name.setText(user.get("Name").toString());
         email.setText(user.getEmail());
         bday.setText(user.get("Birthday").toString());
@@ -79,6 +84,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
 
         rate.setText("$" + user.get("Rate").toString() + "/Hour");
 
+        //Get user rating
         ParseQuery<ParseObject> q = new ParseQuery<ParseObject>("Ratings");
         q.whereEqualTo("email", user.getEmail());
         q.findInBackground(new FindCallback<ParseObject>() {
@@ -96,11 +102,11 @@ public class MoreAboutTeacher extends AppCompatActivity {
                     }
 
                     ratingBar.setRating(rating);
-
                 }
             }
         });
 
+        //Send your rating
         yourRating.setListener(new RatingListener() {
             @Override
             public void onRatePicked(final ProperRatingBar properRatingBar) {
@@ -128,6 +134,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
             }
         });
 
+        //Get teacher profile image
         ParseFile applicantResume = (ParseFile) user.get("Profile");
         applicantResume.getDataInBackground(new GetDataCallback() {
             public void done(byte[] data, ParseException e) {
@@ -143,6 +150,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
         mDialog.dismiss();
     }
 
+    //Go back
     public void back(View view) {
         finish();
     }

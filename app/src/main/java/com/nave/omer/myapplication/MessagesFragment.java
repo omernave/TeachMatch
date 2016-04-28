@@ -38,16 +38,20 @@ public class MessagesFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_messages, container, false);
 
+        //Show activity indicator
         mDialog = new ProgressDialog(getContext());
         mDialog.setMessage("Loading messages...");
         mDialog.setCancelable(false);
         mDialog.show();
 
+        //get ListView
         list = (ListView) view.findViewById(R.id.conversations);
 
+        //Set OnItemClickListener
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Go to Chat and pass email as extra
                 ParseUser item = (ParseUser) list.getItemAtPosition(position);
                 String email = (String) item.getEmail();
 
@@ -58,19 +62,23 @@ public class MessagesFragment extends Fragment {
             }
         });
 
+        //Check for received messages
         checkReceivedMessages();
 
         return view;
     }
 
+    //Check if user received message from new user and save email
     List<String> recList = new ArrayList<String>();
     private void checkReceivedMessages() {
+        //Get email list of users that current user has a chat with
         final SharedPreferences mPrefs = getContext().getSharedPreferences("chat", 0);
         Set<String> recipients = mPrefs.getStringSet("MessagedTo", null);
         if (recipients != null) {
             recList = new ArrayList<String>(recipients);
         }
 
+        //Query to get users current user chats with
         ParseQuery<ParseObject> q = ParseQuery.getQuery("Chat");
 
         ArrayList<String> al = new ArrayList<String>();
@@ -82,6 +90,7 @@ public class MessagesFragment extends Fragment {
             @Override
             public void done(List<ParseObject> li, com.parse.ParseException e) {
                 if (e == null) {
+                    //add the users that aren't saved in SharedPreferences
                     for (ParseObject obj: li) {
                         if (!recList.contains(obj.get("sender"))) {
                             recList.add(obj.get("sender").toString());
@@ -99,7 +108,9 @@ public class MessagesFragment extends Fragment {
         });
     }
 
+    //Get users by email
     public void getRecipients() {
+        //Get saved email list
         final SharedPreferences mPrefs = this.getContext().getSharedPreferences("chat", 0);
         Set<String> recipients = mPrefs.getStringSet("MessagedTo", null);
         List<String> recList = new ArrayList<String>();
@@ -108,15 +119,14 @@ public class MessagesFragment extends Fragment {
             recList = new ArrayList<String>(recipients);
         }
 
-        Log.i("log", "reList size - " + recList.size());
-
+        //Get user with matching emails
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereContainedIn("email", recList);
-        //query.whereEqualTo("email", recList);
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> objects, com.parse.ParseException e) {
                 if (e == null) {
+                    //Setup ListView with users list
                     setupList(objects);
                 } else {
                     mDialog.dismiss();
@@ -126,6 +136,7 @@ public class MessagesFragment extends Fragment {
     }
 
     public void setupList(List<ParseUser> list) {
+        //List to array
         ParseUser[] arr = new ParseUser[list.size()];
 
         int index = 0;

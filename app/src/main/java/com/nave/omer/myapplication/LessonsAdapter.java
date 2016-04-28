@@ -3,7 +3,6 @@ package com.nave.omer.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +28,12 @@ public class LessonsAdapter extends ArrayAdapter<String[]> {
         final View cellView = inflater.inflate(R.layout.future_meetings_item, parent, false);
         final String[] data = getItem(position);
 
+        //Set navigation button
         ImageView navi = (ImageView) cellView.findViewById(R.id.navigate);
         navi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Open Google Maps on location user entered
                 String loc = data[4].replace(" ", "+");
                 Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + loc);
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -41,6 +42,7 @@ public class LessonsAdapter extends ArrayAdapter<String[]> {
             }
         });
 
+        //Setup TextViews
         TextView sub = (TextView) cellView.findViewById(R.id.subject);
         TextView teacher = (TextView) cellView.findViewById(R.id.teacher);
         TextView rate = (TextView) cellView.findViewById(R.id.rate);

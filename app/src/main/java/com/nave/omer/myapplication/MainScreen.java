@@ -149,6 +149,7 @@ public class MainScreen extends AppCompatActivity {
                         }
 
                         if (position == 9) {
+                            //Remove all saved data
                             SharedPreferences preferences = getSharedPreferences("chat", 0);
                             preferences.edit().clear().commit();
 
@@ -163,12 +164,12 @@ public class MainScreen extends AppCompatActivity {
                                 e.printStackTrace();
                             }
 
+                            //Logout and go to FirstLaunch
                             ParseUser.getCurrentUser().logOut();
                             Intent i = new Intent(getBaseContext(), FirstLaunch.class);
                             startActivity(i);
                         }
 
-                        Log.i("log", String.valueOf(position));
                         result.closeDrawer();
                         return true;
                     }
@@ -179,5 +180,11 @@ public class MainScreen extends AppCompatActivity {
 
     public void openMenu(View view) {
         result.openDrawer();
+    }
+
+    //Disable back button
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

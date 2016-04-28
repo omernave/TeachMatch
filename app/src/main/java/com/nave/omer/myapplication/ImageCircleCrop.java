@@ -34,6 +34,7 @@ public class ImageCircleCrop extends AppCompatActivity {
             public void onClick(View v) {
                 // Get cropped image, and show result.
                 Bitmap bitmap = (cropImageView.getCroppedBitmap());
+                //Fix image rotation problem
                 Bitmap fixed = rotateBitmap(bitmap, 270);
                 RegisterScreen.byteBPM = RegisterScreen.scaleDownBitmap(fixed);
 
@@ -45,6 +46,7 @@ public class ImageCircleCrop extends AppCompatActivity {
         });
     }
 
+    //Rotate image
     public static Bitmap rotateBitmap(Bitmap source, float angle)
     {
         Matrix matrix = new Matrix();
@@ -52,6 +54,7 @@ public class ImageCircleCrop extends AppCompatActivity {
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
     }
 
+    //Uncompress Bitmap
     public static Bitmap uncompress(byte[] a){
         return BitmapFactory.decodeByteArray(a, 0, a.length);
     }

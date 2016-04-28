@@ -55,6 +55,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        //Set OnClickListeners
         TextView changepass = (TextView) view.findViewById(R.id.changeps);
         changepass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,19 +103,23 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        //Setup page
         setupPage(view);
 
         return view;
     }
 
     private void setupPage(View view) {
+        //Show activity indicator
         mDialog = new ProgressDialog(getContext());
         mDialog.setMessage("Loading profile...");
         mDialog.setCancelable(false);
         mDialog.show();
 
+        //Get user
         ParseUser user = ParseUser.getCurrentUser();
 
+        //Get user data
         personalInfo(user);
         aboutMe(user);
         learningSubjects(user);
@@ -127,15 +132,18 @@ public class ProfileFragment extends Fragment {
     }
 
     private void personalInfo(ParseUser user) {
+        //Get TextViews
         name = (TextView) view.findViewById(R.id.name);
         email = (TextView) view.findViewById(R.id.date);
         birthday = (TextView) view.findViewById(R.id.birthday);
         final ImageView image = (ImageView) view.findViewById(R.id.profile);
 
+        //Set text
         name.setText(user.getString("Name"));
         email.setText(user.getUsername());
         birthday.setText(user.getString("Birthday"));
 
+        //Get profile image
         ParseFile applicantResume = (ParseFile) user.get("Profile");
         applicantResume.getDataInBackground(new GetDataCallback() {
             public void done(byte[] data, ParseException e) {
@@ -148,23 +156,29 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        //Save values
         values.put("Name", name.getText().toString());
         values.put("email", email.getText().toString());
         values.put("Birthday", birthday.getText().toString());
     }
 
     private void aboutMe(ParseUser user) {
+        //Get TextViews
         aboutMe = (TextView) view.findViewById(R.id.about_me);
         rate = (TextView) view.findViewById(R.id.rate);
 
+        //Set text
         aboutMe.setText(user.getString("AboutMe"));
         rate.setText(String.valueOf(user.getDouble("Rate")) + " $/Hour");
 
+        //Save values
         values.put("Rate", rate.getText().toString());
         values.put("AboutMe", aboutMe.getText().toString());
     }
 
+    //TextView clicked
     public void fieldClicked(View view) {
+        //Open dialog to change value, pass title and key
         switch (view.getId()) {
             case R.id.name:
                 openDialog("Change name:", "Name");
@@ -188,15 +202,19 @@ public class ProfileFragment extends Fragment {
     }
 
     private void openDialog(String title, String key) {
+        //Change birthday - open date picker
         if (key == "Birthday") {
             DatePickerDialog datePickerDialog = new DatePickerDialog(this.getContext(), dplistner, 2016, 1, 1);
             datePickerDialog.show();
             return;
         }
+        //Set key
         final String fkey = key;
+        //Set builder
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setTitle(title);
 
+        //Set input type based on key
         final EditText input = new EditText(view.getContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
         if (key == "Name") {
@@ -205,11 +223,14 @@ public class ProfileFragment extends Fragment {
         if (key == "AboutMe") {
             input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         }
+
         builder.setView(input);
 
+        //Set dialog buttons
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //Save changes
                 finalizeChange(input.getText().toString(), fkey);
             }
         });
@@ -220,9 +241,11 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        //Show dialog
         builder.show();
     }
 
+    //Date picker listener
     private DatePickerDialog.OnDateSetListener dplistner = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -234,7 +257,9 @@ public class ProfileFragment extends Fragment {
     private void finalizeChange(String value, String key) {
         boolean check = true;
         boolean acheck = true;
+        //If dialog text isn't null
         if (value != "") {
+            //Validate value based on key and save
             if (key == "Rate") {
                 acheck = true;
                 try {
@@ -269,6 +294,7 @@ public class ProfileFragment extends Fragment {
             check = false;
         }
 
+        //If value changed, save new values and update page
         if (check) {
             values.put(key, value);
 
@@ -282,6 +308,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
+    //Set learning subjects CheckBoxes and save list
     int[] learningCBId = new int[] {R.id.checkBox1, R.id.checkBox2, R.id.checkBox3, R.id.checkBox4, R.id.checkBox5, R.id.checkBox6, R.id.checkBox7, R.id.checkBox8, R.id.checkBox9, R.id.checkBox10, R.id.checkBox11, R.id.checkBox12, R.id.checkBox13};
     private void learningSubjects(ParseUser user) {
         helpNeeded = (List<String>) user.get("needHelp");
@@ -293,6 +320,7 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    //Set teaching subjects CheckBoxes and save list
     int[] teachingCBId = new int[] {R.id.checkBox14, R.id.checkBox15, R.id.checkBox16, R.id.checkBox17, R.id.checkBox18, R.id.checkBox19, R.id.checkBox20, R.id.checkBox21, R.id.checkBox22, R.id.checkBox23, R.id.checkBox24, R.id.checkBox25, R.id.checkBox26};
     private void teachingSubjects(ParseUser user) {
         canHelp = (List<String>) user.get("canTeach");
@@ -306,6 +334,7 @@ public class ProfileFragment extends Fragment {
         mDialog.dismiss();
     }
 
+    //Add/Remove learning subject
     public void learnCBClicked(View view) {
         CheckBox check = (CheckBox) view;
         ParseUser user = ParseUser.getCurrentUser();
@@ -316,13 +345,12 @@ public class ProfileFragment extends Fragment {
             helpNeeded.remove(check.getText().toString());
         }
 
-        Log.i("log", helpNeeded.toString());
-
         user.remove("needHelp");
         user.addAllUnique("needHelp", helpNeeded);
         user.saveInBackground();
     }
 
+    //Add/Remove teaching subject
     public void teachCBClicked(View view) {
         CheckBox check = (CheckBox) view;
         ParseUser user = ParseUser.getCurrentUser();
@@ -338,6 +366,7 @@ public class ProfileFragment extends Fragment {
         user.saveInBackground();
     }
 
+    //Change password
     public void changePassword(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setTitle("Enter new password");
@@ -348,6 +377,7 @@ public class ProfileFragment extends Fragment {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //Validate
                 if (input.getText().toString().length() >= 8) {
                     ParseUser.getCurrentUser().setPassword(input.getText().toString());
                     ParseUser.getCurrentUser().saveInBackground();
