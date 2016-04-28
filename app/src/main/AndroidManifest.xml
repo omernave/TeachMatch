@@ -115,6 +115,9 @@
             android:name=".CreateNewLesson"
             android:label="@string/title_activity_create_new_lesson"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver android:name=".MyNotificationPublisher" android:enabled="true">
+        </receiver>
     </application>
 
 </manifest>

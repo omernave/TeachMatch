@@ -2,13 +2,20 @@ package com.nave.omer.myapplication;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.app.TaskStackBuilder;
 import android.app.TimePickerDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.RingtoneManager;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -49,7 +56,6 @@ public class CreateNewLesson extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.subjects_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
     }
 
     public void openDateDialog(View view) {
@@ -142,6 +148,42 @@ public class CreateNewLesson extends AppCompatActivity {
     }
 
     private void setNotification(String date, String time) {
-        //SET LOCAL NOTIFICATION
+        String[] dateArr = date.split(".");
+        String[] timeArr = date.split(":");
+
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(timeArr[0]));
+        cal.set(Calendar.MINUTE, Integer.valueOf(timeArr[1]));
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.YEAR, Integer.valueOf(dateArr[2]));
+        cal.set(Calendar.DAY_OF_MONTH, Integer.valueOf(dateArr[0]));
+        cal.set(Calendar.MONTH, Integer.valueOf(dateArr[1]) - 1);
+
+        scheduleNotification(CreateNewLesson.this, cal.getTimeInMillis() - Calendar.getInstance().getTimeInMillis(), 1029);
+    }
+
+    public void scheduleNotification(Context context, long delay, int notificationId) {//delay is after how much time(in millis) from current time you want to schedule the notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+                .setContentTitle("Try")
+                .setContentText("Success")
+                .setAutoCancel(true)
+                .setSmallIcon(R.drawable.notification_icon)
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+
+        Intent intent = new Intent(context, MainScreen.class);
+        PendingIntent activity = PendingIntent.getActivity(context, notificationId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        builder.setContentIntent(activity);
+
+        Notification notification = builder.build();
+
+        Intent notificationIntent = new Intent(context, MyNotificationPublisher.class);
+        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, notificationId);
+        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
 }
