@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import com.nave.omer.myapplication.custom.CustomActivity;
 import com.nave.omer.myapplication.model.Conversation;
-import com.nave.omer.myapplication.utils.Const;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -33,7 +32,6 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
