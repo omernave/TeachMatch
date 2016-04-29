@@ -125,6 +125,8 @@ class TeacherListAdapter extends ArrayAdapter<ParseUser> {
                         ratingBar.setRating(rating);
                         noRating.setAlpha(0);
                     }
+                } else {
+                    noRating.setAlpha(1);
                 }
             }
         });

@@ -117,7 +117,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
                 q.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
-                        if (e == null) {
+                        if (e == null && objects.size() > 0) {
                             ParseObject obj = objects.get(0);
 
                             int num = obj.getInt("numOfVoters");
