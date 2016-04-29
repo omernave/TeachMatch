@@ -1,6 +1,7 @@
 package com.nave.omer.myapplication;
 
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -74,12 +75,18 @@ public class AppSettingsFragment extends Fragment {
 
                 //If disabled cancel all notifications
                 if (!isChecked) {
+                    AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+
+                    while (alarmManager.getNextAlarmClock() != null) {
+                        alarmManager.cancel(alarmManager.getNextAlarmClock().getShowIntent());
+                    }
+                    /*
                     NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
                     StatusBarNotification[] notifications = notificationManager.getActiveNotifications();
 
                     for (StatusBarNotification notification : notifications) {
                         notificationManager.cancel(notification.getId());
-                    }
+                    }*/
                 }
             }
         });

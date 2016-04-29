@@ -33,6 +33,8 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -147,6 +149,7 @@ public class CreateNewLesson extends AppCompatActivity {
                             SharedPreferences mPrefs = getSharedPreferences("settings", 0);
                             boolean isChecked = mPrefs.getBoolean("isEnabled", true);
                             if (isChecked) {
+                                Log.i("log", "Setting notification");
                                 setNotification(date.getText().toString(), time.getText().toString());
                             }
                         } catch (Exception ex) {
@@ -167,21 +170,18 @@ public class CreateNewLesson extends AppCompatActivity {
     }
 
     private void setNotification(String date, String time) {
-        //Get date & time
-        String[] dateArr = date.split(".");
-        String[] timeArr = date.split(":");
 
-        //Set calender to lesson's date & time
+        DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(timeArr[0]) - 1);
-        cal.set(Calendar.MINUTE, Integer.valueOf(timeArr[1]));
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.YEAR, Integer.valueOf(dateArr[2]));
-        cal.set(Calendar.DAY_OF_MONTH, Integer.valueOf(dateArr[0]));
-        cal.set(Calendar.MONTH, Integer.valueOf(dateArr[1]) - 1);
+        try {
+            cal.setTime(sdf.parse(String.format("%s %s", date, time)));
+            cal.add(Calendar.HOUR, -1);
 
-        //Schedule notification
-        scheduleNotification(CreateNewLesson.this, cal.getTimeInMillis() - Calendar.getInstance().getTimeInMillis(), Integer.valueOf(dateArr[0] + dateArr[1] + dateArr[2] + timeArr[0] + timeArr[1]));
+            //Schedule notification
+            scheduleNotification(CreateNewLesson.this, cal.getTimeInMillis() - Calendar.getInstance().getTimeInMillis(), 1212);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //Schedule notification

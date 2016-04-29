@@ -127,7 +127,7 @@ public class MoreAboutTeacher extends AppCompatActivity {
                             obj.put("Sum", sum + properRatingBar.getRating());
                             obj.saveInBackground();
 
-                            Toast.makeText(getApplicationContext(), "Thanks for your vote!" + properRatingBar.getRating(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Thanks for your vote!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -1,6 +1,7 @@
 package com.nave.omer.myapplication;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -162,6 +163,13 @@ public class MainScreen extends AppCompatActivity {
                                 eventsDB.execSQL("DELETE * FROM Lessons");
                             } catch (Exception e) {
                                 e.printStackTrace();
+                            }
+
+                            //Disable notification
+                            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+                            while (alarmManager.getNextAlarmClock() != null) {
+                                alarmManager.cancel(alarmManager.getNextAlarmClock().getShowIntent());
                             }
 
                             //Logout and go to FirstLaunch
