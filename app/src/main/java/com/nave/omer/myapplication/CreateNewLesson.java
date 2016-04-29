@@ -173,7 +173,7 @@ public class CreateNewLesson extends AppCompatActivity {
 
         //Set calender to lesson's date & time
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(timeArr[0]));
+        cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(timeArr[0]) - 1);
         cal.set(Calendar.MINUTE, Integer.valueOf(timeArr[1]));
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.YEAR, Integer.valueOf(dateArr[2]));
