@@ -38,9 +38,11 @@ public class Splash extends AppCompatActivity {
                     ParseUser.getCurrentUser().put("Location", new ParseGeoPoint(location[0], location[1]));
                     ParseUser.getCurrentUser().saveInBackground();
 
+                    finish();
                     Intent i = new Intent(getBaseContext(), MainScreen.class);
                     startActivity(i);
                 } else {
+                    finish();
                     Intent i = new Intent(getBaseContext(), FirstLaunch.class);
                     startActivity(i);
                 }
@@ -59,7 +61,6 @@ public class Splash extends AppCompatActivity {
 
         Location location = new Location(provider);
 
-        //NEED TO CHECK PERMISSIONS!!!
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             location = manager.getLastKnownLocation(provider);
@@ -68,7 +69,7 @@ public class Splash extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     1);
         }
-        //CHECK PERMISSIONS!!!
+
         double[] arr = new double[2];
         if (location != null) {
             arr = new double[] {location.getLatitude(), location.getLongitude()};

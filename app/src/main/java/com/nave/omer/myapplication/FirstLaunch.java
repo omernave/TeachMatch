@@ -47,6 +47,7 @@ public class FirstLaunch extends AppCompatActivity {
                 mDialog.dismiss();
                 if (user != null) {
                     checkSentMessages();
+                    finish();
                     Intent i = new Intent(getBaseContext(), MainScreen.class);
                     startActivity(i);
                 } else {

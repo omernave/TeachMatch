@@ -167,6 +167,7 @@ public class RegisterTeacher extends AppCompatActivity {
                             mDialog.dismiss();
                             //If successful go to main screen
                             if (e == null) {
+                                finish();
                                 Intent i = new Intent(getBaseContext(), MainScreen.class);
                                 startActivity(i);
                             } else {

@@ -34,13 +34,19 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
+import java.util.Stack;
+
 public class MainScreen extends AppCompatActivity {
+
+    Stack<Fragment> fragStack = new Stack<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         Fragment fragment = new MainFragment();
+
+        addFragToStack(fragment);
 
         //Show teacher list
         FragmentManager fm = getSupportFragmentManager();
@@ -105,6 +111,8 @@ public class MainScreen extends AppCompatActivity {
                         if (position == 1) {
                             Fragment fragment = new MainFragment();
 
+                            addFragToStack(fragment);
+
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction transaction = fm.beginTransaction();
                             transaction.replace(R.id.fragment, fragment);
@@ -113,6 +121,8 @@ public class MainScreen extends AppCompatActivity {
 
                         if (position == 2) {
                             Fragment fragment = new MessagesFragment();
+
+                            addFragToStack(fragment);
 
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction transaction = fm.beginTransaction();
@@ -123,6 +133,8 @@ public class MainScreen extends AppCompatActivity {
                         if (position == 4) {
                             Fragment fragment = new MeetingsFragment();
 
+                            addFragToStack(fragment);
+
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction transaction = fm.beginTransaction();
                             transaction.replace(R.id.fragment, fragment);
@@ -131,6 +143,8 @@ public class MainScreen extends AppCompatActivity {
 
                         if (position == 6) {
                             Fragment fragment = new ProfileFragment();
+
+                            addFragToStack(fragment);
 
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction transaction = fm.beginTransaction();
@@ -141,6 +155,8 @@ public class MainScreen extends AppCompatActivity {
 
                         if (position == 7) {
                             Fragment fragment = new AppSettingsFragment();
+
+                            addFragToStack(fragment);
 
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction transaction = fm.beginTransaction();
@@ -186,6 +202,16 @@ public class MainScreen extends AppCompatActivity {
         });
     }
 
+    private void addFragToStack(Fragment frag) {
+        if (fragStack.isEmpty()) {
+            fragStack.add(frag);
+            return;
+        }
+        if (fragStack.peek() != frag) {
+            fragStack.add(frag);
+        }
+    }
+
     public void openMenu(View view) {
         result.openDrawer();
     }
@@ -193,6 +219,17 @@ public class MainScreen extends AppCompatActivity {
     //Disable back button
     @Override
     public void onBackPressed() {
-        return;
+        if (fragStack.size() > 1) {
+            fragStack.pop();
+            Fragment fragment = fragStack.peek();
+
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.replace(R.id.fragment, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else {
+            finish();
+        }
     }
 }
